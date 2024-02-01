@@ -5,6 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bustime UI</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="img/favicon.ico">
+
     <!-- Link to CSS file -->
     <link rel="stylesheet" href="css/bustime.css">
 
@@ -15,10 +18,32 @@
 
   <div class="main-body">
     <div id="sidebar">
-      sidebar
+      <div class="header">
+        <img src="/img/bustime-logo.png" alt="MTA Bus Time" class="logo">
+        <ul class="menu">
+          <li><a href="/">Home</a></li>
+          <li><a href="#">Text</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Contact</a></li>
+          <li><a href="#">Developers</a></li>
+          <li><a href="#">Help</a></li>
+        </ul>
+      </div>
+      <form action="" id="search">
+        <div class="search-field-wrap">
+          <input type="text" placeholder="Search">
+          <button type="submit"><img src="/img/icon/search_white.svg" alt="Submit Search"></button>
+        </div>
+        <p class="instructions">Enter an intersection, bus route or bus stop code.</p>
+      </form>
     </div>
     <div id="map">
-      map
+      <iframe
+        width="100%"
+        height="100%"
+        frameborder="0" style="border:0"
+        src="https://www.google.com/maps/embed/v1/view?key=AIzaSyC65u47U8CJxTrmNcXDP2KwCYGxmQO3ZfU&center=40.7128,-74.0060&zoom=12"
+    ></iframe>
     </div>
   </div>
 
