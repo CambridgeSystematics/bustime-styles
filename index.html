@@ -15,7 +15,7 @@
     <script defer src="js/bustime.js"></script>
 </head>
 <body>
-
+  <h1 class="invisible">MTA Bus Time Home</h1>
   <div class="main-body">
     <div id="sidebar">
       <div class="header">
@@ -36,6 +36,39 @@
         </div>
         <p class="instructions">Enter an intersection, bus route or bus stop code.</p>
       </form>
+      <div class="sidebar-content">
+        <div class="content">
+          <h2>Try these example searches:</h2>
+          <ul>
+            <li>Route: 
+              <ul class="links">
+                <li><a href="#">B63</a></li>
+                <li><a href="#">M5</a></li>
+                <li><a href="#">Bx1</a></li>
+              </ul>
+            </li>
+            <li>Intersection: 
+              <ul class="links">
+                <li><a href="#">Main st and Kissena Bl</a></li>
+              </ul>
+            </li>
+            <li>Stop Code: 
+              <ul class="links">
+                <li><a href="#">200884</a></li>
+              </ul>
+            </li>
+          </ul>
+          <ul class="menu icon-menu">
+            <li class="list-icon"><a href="#">Available Routes</a></li>
+          </ul>
+        </div>
+        <div class="footer">
+          <ul class="menu icon-menu">
+            <li class="mta-icon"><a href="#">Menu</a></li>
+            <li class="google-icon"><a href="#">Google Translate</a></li>
+          </ul>
+        </div>
+      </div>
     </div>
     <div id="map">
       <iframe
