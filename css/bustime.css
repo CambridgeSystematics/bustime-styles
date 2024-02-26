@@ -390,7 +390,7 @@ ul.icon-menu li {
   padding: 0;
   border-bottom: 1px solid #0E61A9;
 }
-ul.icon-menu li a {
+ul.icon-menu li a, ul.icon-menu li button {
   color: currentColor;
   text-decoration: none;
   display: -webkit-inline-box;
@@ -403,8 +403,11 @@ ul.icon-menu li a {
           flex-grow: 1;
   -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out;
   transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out;
+  border: none;
+  outline: none;
+  background: transparent;
 }
-ul.icon-menu li a::before {
+ul.icon-menu li a::before, ul.icon-menu li button::before {
   content: "";
   width: 1.125em;
   height: 1.125em;
@@ -412,7 +415,7 @@ ul.icon-menu li a::before {
   background-repeat: no-repeat;
   background-position: center;
 }
-ul.icon-menu li a::after {
+ul.icon-menu li a::after, ul.icon-menu li button::after {
   content: "";
   width: 1.125em;
   height: 1.125em;
@@ -424,24 +427,26 @@ ul.icon-menu li a::after {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-ul.icon-menu li a:hover, ul.icon-menu li a:focus {
+ul.icon-menu li a:hover, ul.icon-menu li a:focus, ul.icon-menu li button:hover, ul.icon-menu li button:focus {
   text-decoration: none;
   font-weight: bold;
-  color: #000;
   background-color: #fff;
   padding-left: 0.5em;
 }
-ul.icon-menu li a:hover::after, ul.icon-menu li a:focus::after {
+ul.icon-menu li a:hover::after, ul.icon-menu li a:focus::after, ul.icon-menu li button:hover::after, ul.icon-menu li button:focus::after {
   background-image: url(/img/icon/right-caret_black.svg);
 }
-ul.icon-menu li.list-icon a::before {
+ul.icon-menu li.list-icon a::before, ul.icon-menu li.list-icon button::before {
   background-image: url(/img/icon/list_blue.svg);
 }
-ul.icon-menu li.mta-icon a::before {
+ul.icon-menu li.mta-icon a::before, ul.icon-menu li.mta-icon button::before {
   background-image: url(/img/icon/mta-logo_blue.svg);
 }
-ul.icon-menu li.google-icon a::before {
+ul.icon-menu li.google-icon a::before, ul.icon-menu li.google-icon button::before {
   background-image: url(/img/icon/google-logo_blue.svg);
+}
+ul.icon-menu li.star-icon a::before, ul.icon-menu li.star-icon button::before {
+  background-image: url(/img/icon/star_blue.svg);
 }
 
 .main-body {

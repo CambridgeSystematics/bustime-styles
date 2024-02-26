@@ -68,7 +68,7 @@ ul
       margin: 0
       padding: 0
       border-bottom: 1px solid $mta-blue
-      a
+      a, button
         color: currentColor
         text-decoration: none
         display: inline-flex
@@ -76,6 +76,9 @@ ul
         gap: .5em
         flex-grow: 1
         transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out
+        border: none
+        outline: none
+        background: transparent
         &::before
           content: ''
           width: 1.125em
@@ -95,23 +98,27 @@ ul
         &:hover, &:focus
           text-decoration: none
           font-weight: bold
-          color: $black
+          // color: $black
           background-color: $white
           padding-left: .5em
           &::after
             background-image: url(/img/icon/right-caret_black.svg)
       &.list-icon
-        a
+        a, button
           &::before
             background-image: url(/img/icon/list_blue.svg)
       &.mta-icon
-        a
+        a, button
           &::before
             background-image: url(/img/icon/mta-logo_blue.svg)
       &.google-icon
-        a
+        a, button
           &::before
             background-image: url(/img/icon/google-logo_blue.svg)
+      &.star-icon
+        a, button
+          &::before
+            background-image: url(/img/icon/star_blue.svg)
         
       
 
