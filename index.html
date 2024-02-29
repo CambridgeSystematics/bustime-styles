@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/bustime.css">
 
     <!-- Link to JavaScript file -->
-    <script defer src="js/bustime.js"></script>
+    <script defer src="js/bustime.js?v=1.0.01"></script>
 </head>
 <body>
   <h1 class="invisible">MTA Bus Time Home</h1>
@@ -61,14 +61,16 @@
             </li>
           </ul>
           <ul class="menu icon-menu">
-            <li class="list-icon"><a href="#">Available Routes</a></li>
+            <li class="list-icon">
+              <a href="#"><span class="label">Available Routes</span></a>
+            </li>
           </ul>
         </div>
         <div class="footer">
           <ul class="menu icon-menu">
             <li class="star-icon parent">
-              <button id="favorites-menu-trigger" class="sub-menu-trigger">Favorites</button>
-              <ul class="sub-menu menu" id="favorites-menu">
+              <button id="favorites-menu-trigger" class="sub-menu-trigger"><span class="label">Favorites</span></button>
+              <ul class="sub-menu menu" id="favorites-menu" style="max-height: 0px;">
                 <li>
                   <a href="#" class="favorite-route route-border-left b38"><strong>B38</strong> Ridgewood - Downtown Brooklyn</a>
                   <button class="remove-favorite small-link clear-button">Remove Route From Favorites</button>
@@ -92,8 +94,8 @@
               </ul>
             </li>
             <li class="mta-icon parent">
-              <button id="mta-menu-trigger" class="sub-menu-trigger">Menu</button>
-              <ul class="sub-menu menu" id="mta-menu">
+              <button id="mta-menu-trigger" class="sub-menu-trigger"><span class="label">Menu</span></button>
+              <ul class="sub-menu menu" id="mta-menu" style="max-height: 0px;">
                 <li><a href="//new.mta.info">MTA Home</a></li>
                 <li><a href="//new.mta.info/agency/new-york-city-transit">NYC Subways and Buses</a></li>
                 <li><a href="//new.mta.info/agency/long-island-rail-road">Long Island Rail Road</a></li>
@@ -110,7 +112,7 @@
               </ul>
             </li>
             <li class="google-icon">
-              <button id="translate-menu-trigger" class="sub-menu-trigger">Google Translate</button>
+              <button id="translate-menu-trigger" class="sub-menu-trigger"><span class="label">Google Translate</span></button>
             </li>
           </ul>
         </div>

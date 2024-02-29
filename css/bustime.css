@@ -405,6 +405,12 @@ ul:not(.menu) li ul.links li::before {
   outline: none;
   background: transparent;
 }
+.icon-menu li a .label, .icon-menu li button .label {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  text-align: left;
+}
 .icon-menu li a::after, .icon-menu li button::after {
   content: "";
   width: 1.125em;
@@ -413,9 +419,7 @@ ul:not(.menu) li ul.links li::before {
   background-size: auto 100%;
   background-repeat: no-repeat;
   background-position: center right;
-  -webkit-box-flex: 1;
-      -ms-flex-positive: 1;
-          flex-grow: 1;
+  display: inline-block;
 }
 .icon-menu > li > a::before, .icon-menu > li > button::before {
   content: "";
@@ -430,8 +434,19 @@ ul:not(.menu) li ul.links li::before {
   max-height: 0;
   overflow: hidden;
   opacity: 0;
-  -webkit-transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
-  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out 0.25s, opacity 0.5s ease-in-out 0.25s;
+  transition: max-height 0.5s ease-in-out 0.25s, opacity 0.5s ease-in-out 0.25s;
+}
+.icon-menu > li.parent > a::after, .icon-menu > li.parent > button::after {
+  content: "";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+  -webkit-transform-origin: center;
+          transform-origin: center;
 }
 .icon-menu > li.list-icon > a::before, .icon-menu > li.list-icon > button::before {
   background-image: url(/img/icon/list_blue.svg);
@@ -444,6 +459,10 @@ ul:not(.menu) li ul.links li::before {
 }
 .icon-menu > li.star-icon > a::before, .icon-menu > li.star-icon > button::before {
   background-image: url(/img/icon/star_blue-yellow.svg);
+}
+.icon-menu > li.open > a::after, .icon-menu > li.open > button::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
 }
 .icon-menu > li.open .sub-menu {
   max-height: 200vh;

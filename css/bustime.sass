@@ -84,6 +84,9 @@ ul
       border: none
       outline: none
       background: transparent
+      .label
+        flex-grow: 1
+        text-align: left
       &::after
         content: ''
         width: 1.125em
@@ -92,7 +95,7 @@ ul
         background-size: auto 100%
         background-repeat: no-repeat
         background-position: center right
-        flex-grow: 1
+        display: inline-block
       // &:hover, &:focus
       //   text-decoration: none
       //   font-weight: bold
@@ -115,7 +118,14 @@ ul
       max-height: 0
       overflow: hidden
       opacity: 0
-      transition: max-height .5s ease-in-out, opacity .5s ease-in-out
+      transition: max-height .5s ease-in-out .25s, opacity .5s ease-in-out .25s
+    &.parent
+      >a, >button
+        &::after
+          content: ''
+          transform: rotate(90deg)
+          transition: transform .25s ease-in-out
+          transform-origin: center
     &.list-icon
       >a, >button
         &::before
@@ -133,6 +143,9 @@ ul
         &::before
           background-image: url(/img/icon/star_blue-yellow.svg)
     &.open
+      >a, >button
+        &::after
+          transform: rotate(-90deg)
       .sub-menu
         max-height: 200vh
         opacity: 1

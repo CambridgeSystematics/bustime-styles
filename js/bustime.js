@@ -1,17 +1,26 @@
 document.addEventListener('DOMContentLoaded', function() {
-  // Get all elements with the class 'sub-menu-trigger'
   var subMenuTriggers = document.querySelectorAll('.sub-menu-trigger');
 
-  // Add click event listener to each '.sub-menu-trigger'
   subMenuTriggers.forEach(function(trigger) {
-      trigger.addEventListener('click', function() {
-          // Find the closest ancestor with class 'parent'
-          var parent = this.closest('.parent');
-          window.console.log(parent);
-          // Toggle the 'open' class on the closest '.parent'
-          if (parent) {
-              parent.classList.toggle('open');
-          }
-      });
+    trigger.addEventListener('click', function() {
+      var parent = this.closest('.parent');
+      window.console.log(parent);
+
+      if (parent) {
+        parent.classList.toggle('open');
+
+        var subMenu = parent.querySelector('.sub-menu');
+        if (subMenu) {
+          // Calculate the actual height of the sub-menu content
+          var actualHeight = subMenu.scrollHeight;
+
+          // Clear the inline height style before setting a new height
+          subMenu.style.maxHeight = '';
+
+          // Set the height property to achieve animation
+          subMenu.style.maxHeight = parent.classList.contains('open') ? actualHeight + 'px' : '0';
+        }
+      }
+    });
   });
 });
