@@ -55,72 +55,87 @@ ul
           padding: 0
           margin: 0
           &::before
-            content: none
-  &.icon-menu
-    list-style: none
-    padding: 0
-    margin: 0
-    color: $mta-blue
-    border-top: 1px solid $mta-blue
-    li
-      display: flex
-      gap: .5em
-      margin: 0
-      padding: 0
-      border-bottom: 1px solid $mta-blue
-      a, button
-        color: currentColor
-        text-decoration: none
-        display: inline-flex
-        padding: 1em 0
-        gap: .5em
-        flex-grow: 1
-        transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out
-        border: none
-        outline: none
-        background: transparent
-        &::before
-          content: ''
-          width: 1.125em
-          height: 1.125em
-          background-size: auto 100%
-          background-repeat: no-repeat
-          background-position: center
-        &::after
-          content: ''
-          width: 1.125em
-          height: 1.125em
-          background-image: url(/img/icon/right-caret_blue.svg)
-          background-size: auto 100%
-          background-repeat: no-repeat
-          background-position: center right
-          flex-grow: 1
-        &:hover, &:focus
-          text-decoration: none
-          font-weight: bold
-          // color: $black
-          background-color: $white
-          padding-left: .5em
-          &::after
-            background-image: url(/img/icon/right-caret_black.svg)
-      &.list-icon
-        a, button
-          &::before
-            background-image: url(/img/icon/list_blue.svg)
-      &.mta-icon
-        a, button
-          &::before
-            background-image: url(/img/icon/mta-logo_blue.svg)
-      &.google-icon
-        a, button
-          &::before
-            background-image: url(/img/icon/google-logo_blue.svg)
-      &.star-icon
-        a, button
-          &::before
-            background-image: url(/img/icon/star_blue.svg)
-        
+            content: none     
       
+// shared menu styles
+
+.icon-menu
+  list-style: none
+  padding: 0
+  margin: 0
+  color: $mta-blue
+  border-top: 1px solid $mta-blue
+  li
+    // display: flex
+    // gap: .5em
+    margin: 0
+    padding: 0
+    border-bottom: 1px solid $mta-blue
+    // position: relative
+    a, button
+      color: currentColor
+      text-decoration: none
+      display: flex
+      width: 100%
+      padding: 1em 0
+      gap: .5em
+      flex-grow: 1
+      transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out
+      border: none
+      outline: none
+      background: transparent
+      &::after
+        content: ''
+        width: 1.125em
+        height: 1.125em
+        background-image: url(/img/icon/right-caret_blue.svg)
+        background-size: auto 100%
+        background-repeat: no-repeat
+        background-position: center right
+        flex-grow: 1
+      // &:hover, &:focus
+      //   text-decoration: none
+      //   font-weight: bold
+      //   // color: $black
+      //   background-color: $white
+      //   padding-left: .5em
+      //   &::after
+      //     background-image: url(/img/icon/right-caret_black.svg)
+  >li
+    >a, >button
+      &::before
+        content: ''
+        width: 1.125em
+        height: 1.125em
+        background-size: auto 100%
+        background-repeat: no-repeat
+        background-position: center
+    .sub-menu
+      height: auto
+      max-height: 0
+      overflow: hidden
+      opacity: 0
+      transition: max-height .5s ease-in-out, opacity .5s ease-in-out
+    &.list-icon
+      >a, >button
+        &::before
+          background-image: url(/img/icon/list_blue.svg)
+    &.mta-icon
+      >a, >button
+        &::before
+          background-image: url(/img/icon/mta-logo_blue.svg)
+    &.google-icon
+      >a, >button
+        &::before
+          background-image: url(/img/icon/google-logo_blue.svg)
+    &.star-icon
+      >a, >button
+        &::before
+          background-image: url(/img/icon/star_blue-yellow.svg)
+    &.open
+      .sub-menu
+        max-height: 200vh
+        opacity: 1
 
 // basic layout
 
@@ -138,9 +153,9 @@ ul
   align-items: stretch
 
 #sidebar
-  width: 22em
+  width: $sidebar-width
   background-color: $ui-gray
-  overflow: hidden
+  // overflow: hidden
   box-shadow: .25em .25em .5em 0 rgba($black, 0.25)
   position: relative 
   z-index: 1
@@ -220,9 +235,14 @@ ul
       display: flex
       input
         flex: 1
-    .instructions
+  .search-instructions 
+    padding: $content-padding
+    padding-top: 0
+    background: $mta-blue
+    color: $white
+    p
       font-size: .75em
-      margin: 1.333em 0 0 0
+      margin: 0 0 0
   .sidebar-content
     flex: 1 0 0
     overflow-x: hidden
@@ -233,9 +253,13 @@ ul
     justify-content: space-between
     .content
       padding: $content-padding
+      padding-bottom: 0
       flex: 1 0 0
     .footer
       padding: $content-padding
+      padding-top: 0
+      position: relative 
+      top: -1px
 #map
   flex: 1
   position: relative

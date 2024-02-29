@@ -374,28 +374,26 @@ ul:not(.menu) li ul.links li {
 ul:not(.menu) li ul.links li::before {
   content: none;
 }
-ul.icon-menu {
+
+.icon-menu {
   list-style: none;
   padding: 0;
   margin: 0;
   color: #0E61A9;
   border-top: 1px solid #0E61A9;
 }
-ul.icon-menu li {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  gap: 0.5em;
+.icon-menu li {
   margin: 0;
   padding: 0;
   border-bottom: 1px solid #0E61A9;
 }
-ul.icon-menu li a, ul.icon-menu li button {
+.icon-menu li a, .icon-menu li button {
   color: currentColor;
   text-decoration: none;
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
   padding: 1em 0;
   gap: 0.5em;
   -webkit-box-flex: 1;
@@ -407,15 +405,7 @@ ul.icon-menu li a, ul.icon-menu li button {
   outline: none;
   background: transparent;
 }
-ul.icon-menu li a::before, ul.icon-menu li button::before {
-  content: "";
-  width: 1.125em;
-  height: 1.125em;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: center;
-}
-ul.icon-menu li a::after, ul.icon-menu li button::after {
+.icon-menu li a::after, .icon-menu li button::after {
   content: "";
   width: 1.125em;
   height: 1.125em;
@@ -427,26 +417,37 @@ ul.icon-menu li a::after, ul.icon-menu li button::after {
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-ul.icon-menu li a:hover, ul.icon-menu li a:focus, ul.icon-menu li button:hover, ul.icon-menu li button:focus {
-  text-decoration: none;
-  font-weight: bold;
-  background-color: #fff;
-  padding-left: 0.5em;
+.icon-menu > li > a::before, .icon-menu > li > button::before {
+  content: "";
+  width: 1.125em;
+  height: 1.125em;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
 }
-ul.icon-menu li a:hover::after, ul.icon-menu li a:focus::after, ul.icon-menu li button:hover::after, ul.icon-menu li button:focus::after {
-  background-image: url(/img/icon/right-caret_black.svg);
+.icon-menu > li .sub-menu {
+  height: auto;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  -webkit-transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out, opacity 0.5s ease-in-out;
 }
-ul.icon-menu li.list-icon a::before, ul.icon-menu li.list-icon button::before {
+.icon-menu > li.list-icon > a::before, .icon-menu > li.list-icon > button::before {
   background-image: url(/img/icon/list_blue.svg);
 }
-ul.icon-menu li.mta-icon a::before, ul.icon-menu li.mta-icon button::before {
+.icon-menu > li.mta-icon > a::before, .icon-menu > li.mta-icon > button::before {
   background-image: url(/img/icon/mta-logo_blue.svg);
 }
-ul.icon-menu li.google-icon a::before, ul.icon-menu li.google-icon button::before {
+.icon-menu > li.google-icon > a::before, .icon-menu > li.google-icon > button::before {
   background-image: url(/img/icon/google-logo_blue.svg);
 }
-ul.icon-menu li.star-icon a::before, ul.icon-menu li.star-icon button::before {
-  background-image: url(/img/icon/star_blue.svg);
+.icon-menu > li.star-icon > a::before, .icon-menu > li.star-icon > button::before {
+  background-image: url(/img/icon/star_blue-yellow.svg);
+}
+.icon-menu > li.open .sub-menu {
+  max-height: 200vh;
+  opacity: 1;
 }
 
 .main-body {
@@ -471,7 +472,6 @@ ul.icon-menu li.star-icon a::before, ul.icon-menu li.star-icon button::before {
 #sidebar {
   width: 22em;
   background-color: #f3f3f3;
-  overflow: hidden;
   -webkit-box-shadow: 0.25em 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
           box-shadow: 0.25em 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
   position: relative;
@@ -607,9 +607,15 @@ ul.icon-menu li.star-icon a::before, ul.icon-menu li.star-icon button::before {
       -ms-flex: 1;
           flex: 1;
 }
-#sidebar #search .instructions {
+#sidebar .search-instructions {
+  padding: 1em;
+  padding-top: 0;
+  background: #0E61A9;
+  color: #fff;
+}
+#sidebar .search-instructions p {
   font-size: 0.75em;
-  margin: 1.333em 0 0 0;
+  margin: 0 0 0;
 }
 #sidebar .sidebar-content {
   -webkit-box-flex: 1;
@@ -633,12 +639,16 @@ ul.icon-menu li.star-icon a::before, ul.icon-menu li.star-icon button::before {
 }
 #sidebar .sidebar-content .content {
   padding: 1em;
+  padding-bottom: 0;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 0px;
           flex: 1 0 0;
 }
 #sidebar .sidebar-content .footer {
   padding: 1em;
+  padding-top: 0;
+  position: relative;
+  top: -1px;
 }
 
 #map {

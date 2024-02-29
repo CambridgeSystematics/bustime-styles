@@ -34,9 +34,11 @@
           <input type="text" placeholder="Search">
           <button type="submit"><img src="/img/icon/search_white.svg" alt="Submit Search"></button>
         </div>
-        <p class="instructions">Enter an intersection, bus route or bus stop code.</p>
       </form>
       <div class="sidebar-content">
+        <div class="search-instructions">
+          <p>Enter an intersection, bus route or bus stop code.</p>
+        </div>
         <div class="content">
           <h2>Try these example searches:</h2>
           <ul>
@@ -64,9 +66,52 @@
         </div>
         <div class="footer">
           <ul class="menu icon-menu">
-            <li class="star-icon"><button id="favorites-menu-trigger" class="menu-trigger">Favorites</button></li>
-            <li class="mta-icon"><button id="mta-menu-trigger" class="menu-trigger">Menu</button></li>
-            <li class="google-icon"><button id="translate-menu-trigger" class="menu-trigger">Google Translate</button></li>
+            <li class="star-icon parent">
+              <button id="favorites-menu-trigger" class="sub-menu-trigger">Favorites</button>
+              <ul class="sub-menu menu" id="favorites-menu">
+                <li>
+                  <a href="#" class="favorite-route route-border-left b38"><strong>B38</strong> Ridgewood - Downtown Brooklyn</a>
+                  <button class="remove-favorite small-link clear-button">Remove Route From Favorites</button>
+                </li>
+                <li>
+                  <a href="#" class="favorite-stop"><strong>901070</strong> Cadman Plaza West / Tillary</a>
+                  <button class="remove-favorite small-link clear-button">Remove Stop From Favorites</button>
+                </li>
+                <li>
+                  <a href="#" class="favorite-stop"><strong>930058</strong> DeKalb Ave / Throop Ave</a>
+                  <button class="remove-favorite small-link clear-button">Remove Stop From Favorites</button>
+                </li>
+                <li>
+                  <a href="#" class="favorite-route route-border-left b43">B43 Greenpoint - Lefferts Gardens</a>
+                  <button class="remove-favorite small-link clear-button">Remove Route From Favorites</button>
+                </li>
+                <li>
+                  <a href="#" class="favorite-stop"><strong>302947</strong> Fulton St / Bond St</a>
+                  <button class="remove-favorite small-link clear-button">Remove Stop From Favorites</button>
+                </li>
+              </ul>
+            </li>
+            <li class="mta-icon parent">
+              <button id="mta-menu-trigger" class="sub-menu-trigger">Menu</button>
+              <ul class="sub-menu menu" id="mta-menu">
+                <li><a href="//new.mta.info">MTA Home</a></li>
+                <li><a href="//new.mta.info/agency/new-york-city-transit">NYC Subways and Buses</a></li>
+                <li><a href="//new.mta.info/agency/long-island-rail-road">Long Island Rail Road</a></li>
+                <li><a href="//new.mta.info/agency/metro-north-railroad">Metro-North Railroad</a></li>
+                <li><a href="//new.mta.info/agency/bridges-and-tunnels">Bridges and Tunnels</a></li>
+                <li><a href="//new.mta.info/agency/construction-and-development">MTA Capital Program</a></li>
+                <li><a href="//new.mta.info/schedules">Schedules</a></li>
+                <li><a href="//new.mta.info/fares">Fares &amp; Tolls</a></li>
+                <li><a href="//new.mta.info/maps">Maps</a></li>
+                <li><a href="//new.mta.info/alerts">Planned Service Changes</a></li>
+                <li><a href="//new.mta.info/about-us">MTA Info</a></li>
+                <li><a href="//new.mta.info/doing-business-with-us">Doing Business With Us</a></li>
+                <li><a href="//new.mta.info/transparency">Transparency</a></li>
+              </ul>
+            </li>
+            <li class="google-icon">
+              <button id="translate-menu-trigger" class="sub-menu-trigger">Google Translate</button>
+            </li>
           </ul>
         </div>
       </div>
@@ -80,6 +125,5 @@
     ></iframe>
     </div>
   </div>
-
 </body>
 </html>
