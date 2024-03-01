@@ -484,15 +484,6 @@ ul:not(.menu) li ul.links li::before {
   display: inline-block;
   margin-right: 0.25em;
 }
-.icon-menu li a:hover, .icon-menu li a:focus, .icon-menu li button:hover, .icon-menu li button:focus {
-  text-decoration: none;
-  font-weight: bold;
-  background-color: #fff;
-  padding-left: 0.5em;
-}
-.icon-menu li a:hover::after, .icon-menu li a:focus::after, .icon-menu li button:hover::after, .icon-menu li button:focus::after {
-  background-image: url(/img/icon/right-caret_black.svg);
-}
 .icon-menu > li {
   position: relative;
 }
@@ -506,8 +497,8 @@ ul:not(.menu) li ul.links li::before {
   left: -0.5em;
   background-color: #0E61A9;
   opacity: 0;
-  -webkit-transition: opacity 0.125s ease-in-out 0.5s;
-  transition: opacity 0.125s ease-in-out 0.5s;
+  -webkit-transition: opacity 0.125s ease-in-out;
+  transition: opacity 0.125s ease-in-out;
 }
 .icon-menu > li .svg-icon-wrap svg {
   -webkit-transition: fill 0.125s ease-in-out 0.5s;
@@ -522,17 +513,42 @@ ul:not(.menu) li ul.links li::before {
   -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
   transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
 }
+.icon-menu > li > a:focus, .icon-menu > li > button:focus {
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #fff;
+  padding-left: 0.5em;
+}
+.icon-menu > li > a:focus::after, .icon-menu > li > button:focus::after {
+  background-image: url(/img/icon/right-caret_black.svg);
+}
+.icon-menu > li > a:hover .label, .icon-menu > li > button:hover .label {
+  text-decoration: underline;
+}
 .icon-menu > li .sub-menu {
   height: auto;
   max-height: 0;
   overflow: hidden;
   background-color: #fff;
-  -webkit-transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out;
-  transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out, border-top-width 0.25s ease-in-out;
+  transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out, border-top-width 0.25s ease-in-out;
   list-style: none;
   margin: 0;
   padding: 0 1em;
   border-bottom-width: 0;
+}
+.icon-menu > li .sub-menu li a::after, .icon-menu > li .sub-menu li button::after {
+  position: relative;
+  left: 0;
+  -webkit-transition: left 0.25s ease-in-out;
+  transition: left 0.25s ease-in-out;
+}
+.icon-menu > li .sub-menu li a:hover .label, .icon-menu > li .sub-menu li a:focus .label, .icon-menu > li .sub-menu li button:hover .label, .icon-menu > li .sub-menu li button:focus .label {
+  text-decoration: underline;
+  font-weight: bold;
+}
+.icon-menu > li .sub-menu li a:hover::after, .icon-menu > li .sub-menu li a:focus::after, .icon-menu > li .sub-menu li button:hover::after, .icon-menu > li .sub-menu li button:focus::after {
+  left: 0.25em;
 }
 .icon-menu > li .sub-menu li:last-child {
   border-bottom: none;
@@ -598,12 +614,17 @@ ul:not(.menu) li ul.links li::before {
 .icon-menu > li.open > a .svg-icon-wrap svg .blue, .icon-menu > li.open > button .svg-icon-wrap svg .blue {
   fill: #fff;
 }
-.icon-menu > li.open .sub-menu {
+.icon-menu > li.open > a:focus, .icon-menu > li.open > button:focus {
+  background-color: transparent;
+}
+.icon-menu > li.open > a .sub-menu, .icon-menu > li.open > button .sub-menu {
   padding: 0.5em 1em;
   max-height: 200vh;
   opacity: 1;
   border-bottom: solid #0E61A9;
+  border-top: solid #0E61A9;
   border-bottom-width: 0.5em;
+  border-top-width: 0.5em;
 }
 .icon-menu > li.open + li.open::before {
   content: "";

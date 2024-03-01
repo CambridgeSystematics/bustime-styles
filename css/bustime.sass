@@ -145,14 +145,6 @@ ul
         background-position: center right
         display: inline-block
         margin-right: .25em
-      &:hover, &:focus
-        text-decoration: none
-        font-weight: bold
-        // color: $black
-        background-color: $white
-        padding-left: .5em
-        &::after
-          background-image: url(/img/icon/right-caret_black.svg)
   >li
     position: relative
     &::after
@@ -165,7 +157,7 @@ ul
       left: -#{$content-padding/2}
       background-color: $mta-blue
       opacity: 0
-      transition: opacity .125s ease-in-out .5s
+      transition: opacity .125s ease-in-out
     .svg-icon-wrap
       svg
         transition: fill .125s ease-in-out .5s
@@ -174,17 +166,39 @@ ul
     >a, >button
       border: 0px solid
       transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out, border-bottom .25s ease-in-out
+      &:focus
+        text-decoration: none
+        font-weight: bold
+        // color: $black
+        background-color: $white
+        padding-left: .5em
+        &::after
+          background-image: url(/img/icon/right-caret_black.svg)
+      &:hover
+        .label
+          text-decoration: underline
     .sub-menu
       height: auto
       max-height: 0
       overflow: hidden
       background-color: $white
-      transition: max-height .5s ease-in-out, border-bottom-width .25s ease-in-out
+      transition: max-height .5s ease-in-out, border-bottom-width .25s ease-in-out, border-top-width .25s ease-in-out
       list-style: none
       margin: 0
       padding: 0 $content-padding
       border-bottom-width: 0
       li
+        a, button
+          &::after
+            position: relative
+            left: 0
+            transition: left .25s ease-in-out
+          &:hover, &:focus
+            .label
+              text-decoration: underline
+              font-weight: bold
+            &::after
+              left: .25em
         &:last-child
           border-bottom: none
       &#favorites-menu
@@ -228,12 +242,17 @@ ul
               transition: fill .125s ease-in-out
             .blue
               fill: $white
-      .sub-menu
-        padding: $content-padding/2 $content-padding
-        max-height: 200vh
-        opacity: 1
-        border-bottom: solid $mta-blue
-        border-bottom-width: $content-padding/2
+        &:focus
+          background-color: transparent
+          // border: 1px solid $mta-yellow
+        .sub-menu
+          padding: $content-padding/2 $content-padding
+          max-height: 200vh
+          opacity: 1
+          border-bottom: solid $mta-blue
+          border-top: solid $mta-blue
+          border-bottom-width: $content-padding/2
+          border-top-width: $content-padding/2
       & + li.open
         &::before
           content: ''
