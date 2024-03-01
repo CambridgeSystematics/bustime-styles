@@ -421,6 +421,22 @@ ul:not(.menu) li ul.links li::before {
   background-position: center right;
   display: inline-block;
 }
+.icon-menu > li {
+  position: relative;
+}
+.icon-menu > li::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  top: -1px;
+  right: -0.5em;
+  bottom: -1px;
+  left: -0.5em;
+  background-color: #0E61A9;
+  opacity: 0;
+  -webkit-transition: opacity 0.125s ease-in-out 0.5s;
+  transition: opacity 0.125s ease-in-out 0.5s;
+}
 .icon-menu > li > a::before, .icon-menu > li > button::before {
   content: "";
   width: 1.125em;
@@ -433,18 +449,14 @@ ul:not(.menu) li ul.links li::before {
   height: auto;
   max-height: 0;
   overflow: hidden;
-  opacity: 0;
-  -webkit-transition: max-height 0.5s ease-in-out 0.25s, opacity 0.5s ease-in-out 0.25s;
-  transition: max-height 0.5s ease-in-out 0.25s, opacity 0.5s ease-in-out 0.25s;
+  background-color: #fff;
+  -webkit-transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
 }
 .icon-menu > li.parent > a::after, .icon-menu > li.parent > button::after {
   content: "";
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
-  -webkit-transition: -webkit-transform 0.25s ease-in-out;
-  transition: -webkit-transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out;
-  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
   -webkit-transform-origin: center;
           transform-origin: center;
 }
@@ -460,7 +472,18 @@ ul:not(.menu) li ul.links li::before {
 .icon-menu > li.star-icon > a::before, .icon-menu > li.star-icon > button::before {
   background-image: url(/img/icon/star_blue-yellow.svg);
 }
+.icon-menu > li.open::after {
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+.icon-menu > li.open > a, .icon-menu > li.open > button {
+  color: #fff;
+  position: relative;
+  z-index: 1;
+}
 .icon-menu > li.open > a::after, .icon-menu > li.open > button::after {
+  background-image: url(/img/icon/right-caret_white.svg);
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }

@@ -105,6 +105,18 @@ ul
       //   &::after
       //     background-image: url(/img/icon/right-caret_black.svg)
   >li
+    position: relative
+    &::after
+      content: ''
+      position: absolute
+      z-index: -1
+      top: -1px
+      right: -#{$content-padding/2}
+      bottom: -1px
+      left: -#{$content-padding/2}
+      background-color: $mta-blue
+      opacity: 0
+      transition: opacity .125s ease-in-out .5s
     >a, >button
       &::before
         content: ''
@@ -117,14 +129,14 @@ ul
       height: auto
       max-height: 0
       overflow: hidden
-      opacity: 0
-      transition: max-height .5s ease-in-out .25s, opacity .5s ease-in-out .25s
+      background-color: $white
+      transition: max-height .5s ease-in-out
     &.parent
       >a, >button
         &::after
           content: ''
           transform: rotate(90deg)
-          transition: transform .25s ease-in-out
+          // transition: transform .25s ease-in-out
           transform-origin: center
     &.list-icon
       >a, >button
@@ -143,8 +155,20 @@ ul
         &::before
           background-image: url(/img/icon/star_blue-yellow.svg)
     &.open
+      &::after
+        // top: -1px
+        // right: -#{$content-padding/2}
+        // bottom: -1px
+        // left: -#{$content-padding/2}
+        opacity: 1
+        transition: opacity .25s ease-in-out
       >a, >button
+        // background-color: $mta-blue
+        color: $white
+        position: relative
+        z-index: 1
         &::after
+          background-image: url(/img/icon/right-caret_white.svg)
           transform: rotate(-90deg)
       .sub-menu
         max-height: 200vh
