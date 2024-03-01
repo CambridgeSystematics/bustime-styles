@@ -11,6 +11,8 @@ body
   min-width: 100vw
   min-height: 100vh
   position: relative
+  *
+    box-sizing: border-box
 
 a
   color: $black
@@ -142,14 +144,15 @@ ul
         background-repeat: no-repeat
         background-position: center right
         display: inline-block
-      // &:hover, &:focus
-      //   text-decoration: none
-      //   font-weight: bold
-      //   // color: $black
-      //   background-color: $white
-      //   padding-left: .5em
-      //   &::after
-      //     background-image: url(/img/icon/right-caret_black.svg)
+        margin-right: .25em
+      &:hover, &:focus
+        text-decoration: none
+        font-weight: bold
+        // color: $black
+        background-color: $white
+        padding-left: .5em
+        &::after
+          background-image: url(/img/icon/right-caret_black.svg)
   >li
     position: relative
     &::after

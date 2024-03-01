@@ -319,6 +319,10 @@ body {
   min-height: 100vh;
   position: relative;
 }
+body * {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
 
 a {
   color: #000;
@@ -478,6 +482,16 @@ ul:not(.menu) li ul.links li::before {
   background-repeat: no-repeat;
   background-position: center right;
   display: inline-block;
+  margin-right: 0.25em;
+}
+.icon-menu li a:hover, .icon-menu li a:focus, .icon-menu li button:hover, .icon-menu li button:focus {
+  text-decoration: none;
+  font-weight: bold;
+  background-color: #fff;
+  padding-left: 0.5em;
+}
+.icon-menu li a:hover::after, .icon-menu li a:focus::after, .icon-menu li button:hover::after, .icon-menu li button:focus::after {
+  background-image: url(/img/icon/right-caret_black.svg);
 }
 .icon-menu > li {
   position: relative;
