@@ -402,6 +402,33 @@ ul:not(.menu) li ul.links li::before {
   font-weight: bold !important;
 }
 
+.svg-icon-wrap {
+  width: 1.125em;
+  height: 1.125em;
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0;
+  padding: 0;
+}
+.svg-icon-wrap svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+  stroke: none;
+  stroke-width: 0;
+  margin: 0;
+  padding: 0;
+}
+.svg-icon-wrap svg .blue {
+  fill: #0E61A9;
+}
+.svg-icon-wrap svg .yellow {
+  fill: #f2a900;
+}
+.svg-icon-wrap svg .white {
+  fill: #fff;
+}
+
 .icon-menu {
   list-style: none;
   padding: 0;
@@ -468,19 +495,18 @@ ul:not(.menu) li ul.links li::before {
   -webkit-transition: opacity 0.125s ease-in-out 0.5s;
   transition: opacity 0.125s ease-in-out 0.5s;
 }
+.icon-menu > li .svg-icon-wrap svg {
+  -webkit-transition: fill 0.125s ease-in-out 0.5s;
+  transition: fill 0.125s ease-in-out 0.5s;
+}
+.icon-menu > li .svg-icon-wrap svg * {
+  -webkit-transition: fill 0.125s ease 0.5s;
+  transition: fill 0.125s ease 0.5s;
+}
 .icon-menu > li > a, .icon-menu > li > button {
   border: 0px solid;
   -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
   transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
-}
-.icon-menu > li > a::before, .icon-menu > li > button::before {
-  content: "";
-  display: inline-block;
-  width: 1.125em;
-  height: 1.125em;
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: center;
 }
 .icon-menu > li .sub-menu {
   height: auto;
@@ -531,18 +557,6 @@ ul:not(.menu) li ul.links li::before {
   -webkit-transform-origin: center;
           transform-origin: center;
 }
-.icon-menu > li.list-icon > a::before, .icon-menu > li.list-icon > button::before {
-  background-image: url(/img/icon/list_blue.svg);
-}
-.icon-menu > li.mta-icon > a::before, .icon-menu > li.mta-icon > button::before {
-  background-image: url(/img/icon/mta-logo_blue.svg);
-}
-.icon-menu > li.google-icon > a::before, .icon-menu > li.google-icon > button::before {
-  background-image: url(/img/icon/google-logo_blue.svg);
-}
-.icon-menu > li.star-icon > a::before, .icon-menu > li.star-icon > button::before {
-  background-image: url(/img/icon/star_blue-yellow.svg);
-}
 .icon-menu > li.open::after {
   opacity: 1;
   -webkit-transition: opacity 0.25s ease-in-out;
@@ -559,14 +573,16 @@ ul:not(.menu) li ul.links li::before {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
 }
-.icon-menu > li.open.mta-icon > a::before, .icon-menu > li.open.mta-icon > button::before {
-  background-image: url(/img/icon/mta-logo_white.svg);
+.icon-menu > li.open > a .svg-icon-wrap svg, .icon-menu > li.open > button .svg-icon-wrap svg {
+  -webkit-transition: fill 0.125s ease-in-out;
+  transition: fill 0.125s ease-in-out;
 }
-.icon-menu > li.open.google-icon > a::before, .icon-menu > li.open.google-icon > button::before {
-  background-image: url(/img/icon/google-logo_white.svg);
+.icon-menu > li.open > a .svg-icon-wrap svg *, .icon-menu > li.open > button .svg-icon-wrap svg * {
+  -webkit-transition: fill 0.125s ease-in-out;
+  transition: fill 0.125s ease-in-out;
 }
-.icon-menu > li.open.star-icon > a::before, .icon-menu > li.open.star-icon > button::before {
-  background-image: url(/img/icon/star_white-yellow.svg);
+.icon-menu > li.open > a .svg-icon-wrap svg .blue, .icon-menu > li.open > button .svg-icon-wrap svg .blue {
+  fill: #fff;
 }
 .icon-menu > li.open .sub-menu {
   padding: 0.5em 1em;

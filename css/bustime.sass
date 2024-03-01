@@ -79,6 +79,28 @@ ul
   &:focus
     font-weight: bold!important
 
+.svg-icon-wrap
+  width: 1.125em
+  height: 1.125em
+  display: inline-block
+  vertical-align: middle
+  margin: 0
+  padding: 0
+  svg
+    width: 100%
+    height: 100%
+    fill: currentColor
+    stroke: none
+    stroke-width: 0
+    margin: 0
+    padding: 0
+    .blue
+      fill: $mta-blue
+    .yellow
+      fill: $mta-yellow
+    .white
+      fill: $white
+
 // shared menu styles
 
 .icon-menu
@@ -141,10 +163,14 @@ ul
       background-color: $mta-blue
       opacity: 0
       transition: opacity .125s ease-in-out .5s
+    .svg-icon-wrap
+      svg
+        transition: fill .125s ease-in-out .5s
+        *
+          transition: fill .125s ease .5s
     >a, >button
       border: 0px solid
       transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out, border-bottom .25s ease-in-out
-      +icon-before
     .sub-menu
       height: auto
       max-height: 0
@@ -179,34 +205,12 @@ ul
         &::after
           content: ''
           transform: rotate(90deg)
-          // transition: transform .25s ease-in-out
           transform-origin: center
-    &.list-icon
-      >a, >button
-        &::before
-          background-image: url(/img/icon/list_blue.svg)
-    &.mta-icon
-      >a, >button
-        &::before
-          background-image: url(/img/icon/mta-logo_blue.svg)
-    &.google-icon
-      >a, >button
-        &::before
-          background-image: url(/img/icon/google-logo_blue.svg)
-    &.star-icon
-      >a, >button
-        &::before
-          background-image: url(/img/icon/star_blue-yellow.svg)
     &.open
       &::after
-        // top: -1px
-        // right: -#{$content-padding/2}
-        // bottom: -1px
-        // left: -#{$content-padding/2}
         opacity: 1
         transition: opacity .25s ease-in-out
       >a, >button
-        // background-color: $mta-blue
         color: $white
         position: relative
         z-index: 1
@@ -214,18 +218,13 @@ ul
         &::after
           background-image: url(/img/icon/right-caret_white.svg)
           transform: rotate(-90deg)
-      &.mta-icon
-        >a, >button
-          &::before
-            background-image: url(/img/icon/mta-logo_white.svg)
-      &.google-icon
-        >a, >button
-          &::before
-            background-image: url(/img/icon/google-logo_white.svg)
-      &.star-icon
-        >a, >button
-          &::before
-            background-image: url(/img/icon/star_white-yellow.svg)
+        .svg-icon-wrap
+          svg
+            transition: fill .125s ease-in-out
+            *
+              transition: fill .125s ease-in-out
+            .blue
+              fill: $white
       .sub-menu
         padding: $content-padding/2 $content-padding
         max-height: 200vh
