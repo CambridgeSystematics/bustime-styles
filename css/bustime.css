@@ -375,6 +375,33 @@ ul:not(.menu) li ul.links li::before {
   content: none;
 }
 
+.button:hover, button:hover {
+  cursor: pointer;
+}
+.button.clear-button, button.clear-button {
+  border: none;
+  outline: none;
+  background: transparent;
+  color: currentColor;
+}
+.button.clear-button::after, .button.clear-button::before, button.clear-button::after, button.clear-button::before {
+  content: none !important;
+  display: none !important;
+}
+
+.small-link {
+  font-size: 0.75em;
+  text-decoration: underline !important;
+  color: #3A3A49 !important;
+  padding: 0px !important;
+}
+.small-link:hover {
+  text-decoration: none !important;
+}
+.small-link:focus {
+  font-weight: bold !important;
+}
+
 .icon-menu {
   list-style: none;
   padding: 0;
@@ -399,6 +426,9 @@ ul:not(.menu) li ul.links li::before {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out;
   transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out;
   border: none;
@@ -410,6 +440,7 @@ ul:not(.menu) li ul.links li::before {
       -ms-flex-positive: 1;
           flex-grow: 1;
   text-align: left;
+  line-height: 1.25;
 }
 .icon-menu li a::after, .icon-menu li button::after {
   content: "";
@@ -437,8 +468,14 @@ ul:not(.menu) li ul.links li::before {
   -webkit-transition: opacity 0.125s ease-in-out 0.5s;
   transition: opacity 0.125s ease-in-out 0.5s;
 }
+.icon-menu > li > a, .icon-menu > li > button {
+  border: 0px solid;
+  -webkit-transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
+  transition: color 0.25s ease-in-out, background-color 0.25s ease-in-out, padding-left 0.25s ease-in-out, border-bottom 0.25s ease-in-out;
+}
 .icon-menu > li > a::before, .icon-menu > li > button::before {
   content: "";
+  display: inline-block;
   width: 1.125em;
   height: 1.125em;
   background-size: auto 100%;
@@ -450,8 +487,42 @@ ul:not(.menu) li ul.links li::before {
   max-height: 0;
   overflow: hidden;
   background-color: #fff;
-  -webkit-transition: max-height 0.5s ease-in-out;
-  transition: max-height 0.5s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out;
+  transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out;
+  list-style: none;
+  margin: 0;
+  padding: 0 1em;
+  border-bottom-width: 0;
+}
+.icon-menu > li .sub-menu li:last-child {
+  border-bottom: none;
+}
+.icon-menu > li .sub-menu#favorites-menu .label {
+  font-size: 0.875em;
+}
+.icon-menu > li .sub-menu#favorites-menu .remove-favorite {
+  margin-bottom: 1em;
+}
+.icon-menu > li .sub-menu#favorites-menu .favorite-route .label {
+  border-left: 4px solid;
+  padding-left: 0.5em;
+}
+.icon-menu > li .sub-menu#favorites-menu .favorite-stop {
+  gap: 0.25em;
+}
+.icon-menu > li .sub-menu#favorites-menu .favorite-stop::before {
+  content: "";
+  display: inline-block;
+  width: 1.125em;
+  height: 1.125em;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.icon-menu > li .sub-menu#favorites-menu .favorite-stop::before {
+  width: 1.3em;
+  height: 1.3em;
+  background-image: url(/img/icon/bus-stop.svg);
 }
 .icon-menu > li.parent > a::after, .icon-menu > li.parent > button::after {
   content: "";
@@ -481,6 +552,7 @@ ul:not(.menu) li ul.links li::before {
   color: #fff;
   position: relative;
   z-index: 1;
+  border-bottom: 4px solid #f2a900;
 }
 .icon-menu > li.open > a::after, .icon-menu > li.open > button::after {
   background-image: url(/img/icon/right-caret_white.svg);
@@ -488,8 +560,20 @@ ul:not(.menu) li ul.links li::before {
           transform: rotate(-90deg);
 }
 .icon-menu > li.open .sub-menu {
+  padding: 0.5em 1em;
   max-height: 200vh;
   opacity: 1;
+  border-bottom: solid #0E61A9;
+  border-bottom-width: 0.5em;
+}
+.icon-menu > li.open + li.open::before {
+  content: "";
+  position: absolute;
+  top: -1px;
+  right: -0.5em;
+  left: -0.5em;
+  background-color: #f3f3f3;
+  height: 1px;
 }
 
 .main-body {

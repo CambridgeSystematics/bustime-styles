@@ -56,7 +56,29 @@ ul
           margin: 0
           &::before
             content: none     
-      
+
+.button, button
+  &:hover
+    cursor: pointer
+  &.clear-button
+    border: none
+    outline: none
+    background: transparent
+    color: currentColor
+    &::after, &::before
+      content: none!important
+      display: none!important
+
+.small-link
+  font-size: .75em
+  text-decoration: underline!important
+  color: $black3!important
+  padding: 0px!important
+  &:hover
+    text-decoration: none!important
+  &:focus
+    font-weight: bold!important
+
 // shared menu styles
 
 .icon-menu
@@ -80,6 +102,7 @@ ul
       padding: 1em 0
       gap: .5em
       flex-grow: 1
+      align-items: center
       transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out
       border: none
       outline: none
@@ -87,6 +110,7 @@ ul
       .label
         flex-grow: 1
         text-align: left
+        line-height: 1.25
       &::after
         content: ''
         width: 1.125em
@@ -118,19 +142,38 @@ ul
       opacity: 0
       transition: opacity .125s ease-in-out .5s
     >a, >button
-      &::before
-        content: ''
-        width: 1.125em
-        height: 1.125em
-        background-size: auto 100%
-        background-repeat: no-repeat
-        background-position: center
+      border: 0px solid
+      transition: color .25s ease-in-out, background-color .25s ease-in-out, padding-left .25s ease-in-out, border-bottom .25s ease-in-out
+      +icon-before
     .sub-menu
       height: auto
       max-height: 0
       overflow: hidden
       background-color: $white
-      transition: max-height .5s ease-in-out
+      transition: max-height .5s ease-in-out, border-bottom-width .25s ease-in-out
+      list-style: none
+      margin: 0
+      padding: 0 $content-padding
+      border-bottom-width: 0
+      li
+        &:last-child
+          border-bottom: none
+      &#favorites-menu
+        .label
+          font-size: .875em
+        .remove-favorite
+          margin-bottom: $content-padding
+        .favorite-route
+          .label
+            border-left: $thick-border solid
+            padding-left: .5em
+        .favorite-stop
+          +icon-before
+          gap:  .25em
+          &::before
+            width: 1.3em
+            height: 1.3em
+            background-image: url(/img/icon/bus-stop.svg)
     &.parent
       >a, >button
         &::after
@@ -167,12 +210,25 @@ ul
         color: $white
         position: relative
         z-index: 1
+        border-bottom: $thick-border solid $mta-yellow
         &::after
           background-image: url(/img/icon/right-caret_white.svg)
           transform: rotate(-90deg)
       .sub-menu
+        padding: $content-padding/2 $content-padding
         max-height: 200vh
         opacity: 1
+        border-bottom: solid $mta-blue
+        border-bottom-width: $content-padding/2
+      & + li.open
+        &::before
+          content: ''
+          position: absolute
+          top: -1px
+          right: -#{$content-padding/2}
+          left: -#{$content-padding/2}
+          background-color: $ui-gray
+          height: 1px
 
 // basic layout
 
