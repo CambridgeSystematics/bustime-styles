@@ -545,7 +545,7 @@ ul:not(.menu) li ul.links li::before {
 }
 .icon-menu > li .sub-menu li a:hover .label, .icon-menu > li .sub-menu li a:focus .label, .icon-menu > li .sub-menu li button:hover .label, .icon-menu > li .sub-menu li button:focus .label {
   text-decoration: underline;
-  font-weight: bold;
+  color: #202025;
 }
 .icon-menu > li .sub-menu li a:hover::after, .icon-menu > li .sub-menu li a:focus::after, .icon-menu > li .sub-menu li button:hover::after, .icon-menu > li .sub-menu li button:focus::after {
   left: 0.25em;
