@@ -64,6 +64,11 @@ ul
             content: none     
 
 .button, button
+  font-weight: bold
+  padding: 0 1em
+  +rounded
+  height: $button-height
+  vertical-align: middle
   &:hover
     cursor: pointer
   &.clear-button
@@ -293,6 +298,7 @@ ul
   flex-direction: column
   align-items: stretch
   align-content: stretch
+  height: calc(100vh - #{$button-height + 2em})
   .header
     background-color: $black2
     color: $white
@@ -392,6 +398,23 @@ ul
       top: -1px
   +mq($sidebar-switch)
     width: $sidebar-width
+
+.bottom-button
+  position: absolute
+  bottom: 0
+  left: 0
+  width: 100vw
+  background: $black2
+  height: $button-height + $content-padding + $content-padding
+  z-index: 1000
+  padding: 0 $content-padding
+  display: flex
+  align-items: center
+  justify-content: center
+  button
+    flex-grow: 1
+  +mq($sidebar-switch)
+    display: none
 
 #map
   flex: 1
