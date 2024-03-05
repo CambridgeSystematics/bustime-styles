@@ -13,6 +13,10 @@ body
   position: relative
   *
     box-sizing: border-box
+  +mq($sidebar-switch)
+    font-size: 14px
+  +mq($nine)
+    font-size: 16px
 
 a
   color: $black
@@ -279,7 +283,7 @@ ul
   align-items: stretch
 
 #sidebar
-  width: $sidebar-width
+  width: 100%
   background-color: $ui-gray
   // overflow: hidden
   box-shadow: .25em .25em .5em 0 rgba($black, 0.25)
@@ -386,7 +390,17 @@ ul
       padding-top: 0
       position: relative 
       top: -1px
+  +mq($sidebar-switch)
+    width: $sidebar-width
+
 #map
   flex: 1
-  position: relative
+  position: absolute
   z-index: 0
+  width: 100vw
+  height: 100vh
+  top: 110vh
+  left: 0
+  +mq($sidebar-switch)
+    position: relative  
+    top: 0
