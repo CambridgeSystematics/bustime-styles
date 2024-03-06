@@ -350,12 +350,6 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
-h1.invisible {
-  position: absolute;
-  top: -9999px;
-  left: -9999px;
-}
-
 ul:not(.menu) {
   list-style: none;
   padding: 0;
@@ -462,6 +456,17 @@ button:hover, .button:hover {
 }
 .svg-icon-wrap svg .white {
   fill: #fff;
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
 }
 
 .icon-menu {

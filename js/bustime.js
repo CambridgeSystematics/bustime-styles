@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', function() {
   subMenuTriggers.forEach(function(trigger) {
     trigger.addEventListener('click', function() {
       var parent = this.closest('.parent');
-      window.console.log(parent);
+      // window.console.log(parent);
 
       if (parent) {
         parent.classList.toggle('open');
@@ -29,6 +29,9 @@ document.addEventListener('DOMContentLoaded', function() {
             var currentIndex = element.getAttribute('tabindex');
             element.setAttribute('tabindex', currentIndex === '0' ? '-1' : '0');
           });
+
+          // Set aria-expanded attribute
+          this.setAttribute('aria-expanded', parent.classList.contains('open'));
         }
       }
     });
