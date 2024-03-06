@@ -18,7 +18,9 @@ $mta-yellow: #f2a900
 $content-padding: 1em
 $sidebar-width: 22em  
 $thick-border: 4px
+$medium-border: 2px
 $button-height: 3.125em
+$bottom-buttons-height: $button-height + $content-padding + $content-padding
 
 // breakpoints
 
@@ -65,6 +67,9 @@ $sidebar-switch: $six
     background-size: auto 100%
     background-repeat: no-repeat
     background-position: center
+
+=text-outline($color: $white, $width: 1px)
+  text-shadow: -#{$width} -#{$width} 0 $color, $width -#{$width} 0 $color, -#{$width} $width 0 $color, $width $width 0 $color
 
 // MEDIA QUERIES
 

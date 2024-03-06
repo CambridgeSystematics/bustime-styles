@@ -63,22 +63,33 @@ ul
           &::before
             content: none     
 
-.button, button
-  font-weight: bold
-  padding: 0 1em
-  +rounded
-  height: $button-height
+button, .button
+  font-size: 1em
   vertical-align: middle
   &:hover
     cursor: pointer
-  &.clear-button
-    border: none
-    outline: none
-    background: transparent
-    color: currentColor
-    &::after, &::before
-      content: none!important
-      display: none!important
+
+.button
+  font-weight: bold
+  padding: $content-padding
+  +rounded
+  color: $mta-blue
+  background-color: $white
+  border: $medium-border solid currentColor
+  line-height: 1
+  &.icon-button-left
+    padding-left: #{$content-padding*.625}
+    .icon
+      margin-right: .5em
+
+.clear-button
+  border: none
+  outline: none
+  background: transparent
+  color: currentColor
+  &::after, &::before
+    content: none!important
+    display: none!important
 
 .small-link
   font-size: .75em
@@ -398,32 +409,61 @@ ul
       top: -1px
   +mq($sidebar-switch)
     width: $sidebar-width
+    height: auto
 
-.bottom-button
+.bottom-buttons
   position: absolute
   bottom: 0
   left: 0
   width: 100vw
   background: $black2
-  height: $button-height + $content-padding + $content-padding
-  z-index: 1000
+  height: $bottom-buttons-height
+  z-index: 101
   padding: 0 $content-padding
   display: flex
   align-items: center
   justify-content: center
+  gap: $content-padding
+  transition: bottom .5s ease-out
   button
-    flex-grow: 1
+    border-color: transparent
+    &#map-trigger
+      flex-grow: 1
+      background-image: url(/img/blank-map-bg.png)
+      background-size: $sidebar-switch auto
+      background-position: center
+      +text-outline($white, .125em)
+    &#refresh
+      flex-grow: 0
+      white-space: nowrap
+      overflow: hidden
+      text-overflow: ellipsis
+      .updated-at
+        font-weight: normal
+      .updated
+        display: none
+  &.open
+    bottom: calc(100vh - $bottom-buttons-height)
+  +mq($four)
+    button
+      &#refresh
+        .updated
+          display: inline
+        
   +mq($sidebar-switch)
     display: none
 
 #map
   flex: 1
   position: absolute
-  z-index: 0
+  z-index: 100
   width: 100vw
   height: 100vh
   top: 110vh
   left: 0
+  transition: top .5s ease-out
+  &.open
+    top: $bottom-buttons-height
   +mq($sidebar-switch)
     position: relative  
     top: 0

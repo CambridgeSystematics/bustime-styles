@@ -389,23 +389,37 @@ ul:not(.menu) li ul.links li::before {
   content: none;
 }
 
-.button, button {
-  font-weight: bold;
-  padding: 0 1em;
-  border-radius: 0.25em;
-  height: 3.125em;
+button, .button {
+  font-size: 1em;
   vertical-align: middle;
 }
-.button:hover, button:hover {
+button:hover, .button:hover {
   cursor: pointer;
 }
-.button.clear-button, button.clear-button {
+
+.button {
+  font-weight: bold;
+  padding: 1em;
+  border-radius: 0.25em;
+  color: #0E61A9;
+  background-color: #fff;
+  border: 2px solid currentColor;
+  line-height: 1;
+}
+.button.icon-button-left {
+  padding-left: 0.625em;
+}
+.button.icon-button-left .icon {
+  margin-right: 0.5em;
+}
+
+.clear-button {
   border: none;
   outline: none;
   background: transparent;
   color: currentColor;
 }
-.button.clear-button::after, .button.clear-button::before, button.clear-button::after, button.clear-button::before {
+.clear-button::after, .clear-button::before {
   content: none !important;
   display: none !important;
 }
@@ -857,17 +871,18 @@ ul:not(.menu) li ul.links li::before {
 @media screen and (min-width: 600px) {
   #sidebar {
     width: 22em;
+    height: auto;
   }
 }
 
-.bottom-button {
+.bottom-buttons {
   position: absolute;
   bottom: 0;
   left: 0;
   width: 100vw;
   background: #202025;
   height: 5.125em;
-  z-index: 1000;
+  z-index: 101;
   padding: 0 1em;
   display: -webkit-box;
   display: -ms-flexbox;
@@ -878,14 +893,46 @@ ul:not(.menu) li ul.links li::before {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  gap: 1em;
+  -webkit-transition: bottom 0.5s ease-out;
+  transition: bottom 0.5s ease-out;
 }
-.bottom-button button {
+.bottom-buttons button {
+  border-color: transparent;
+}
+.bottom-buttons button#map-trigger {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
+  background-image: url(/img/blank-map-bg.png);
+  background-size: 600px auto;
+  background-position: center;
+  text-shadow: -0.125em -0.125em 0 #fff, 0.125em -0.125em 0 #fff, -0.125em 0.125em 0 #fff, 0.125em 0.125em 0 #fff;
+}
+.bottom-buttons button#refresh {
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.bottom-buttons button#refresh .updated-at {
+  font-weight: normal;
+}
+.bottom-buttons button#refresh .updated {
+  display: none;
+}
+.bottom-buttons.open {
+  bottom: calc(100vh - 5.125em);
+}
+@media screen and (min-width: 400px) {
+  .bottom-buttons button#refresh .updated {
+    display: inline;
+  }
 }
 @media screen and (min-width: 600px) {
-  .bottom-button {
+  .bottom-buttons {
     display: none;
   }
 }
@@ -895,11 +942,16 @@ ul:not(.menu) li ul.links li::before {
       -ms-flex: 1;
           flex: 1;
   position: absolute;
-  z-index: 0;
+  z-index: 100;
   width: 100vw;
   height: 100vh;
   top: 110vh;
   left: 0;
+  -webkit-transition: top 0.5s ease-out;
+  transition: top 0.5s ease-out;
+}
+#map.open {
+  top: 5.125em;
 }
 @media screen and (min-width: 600px) {
   #map {

@@ -1,4 +1,7 @@
 document.addEventListener('DOMContentLoaded', function() {
+
+
+  // sub menus open and close
   var subMenuTriggers = document.querySelectorAll('.sub-menu-trigger');
 
   subMenuTriggers.forEach(function(trigger) {
@@ -30,4 +33,19 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   });
+
+  // map trigger open and close
+  var mapTrigger = document.getElementById('map-trigger');
+  var map = document.getElementById('map');
+
+  mapTrigger.addEventListener('click', function() {
+    map.classList.toggle('open');
+    mapTrigger.parentElement.classList.toggle('open');
+
+    mapTrigger.setAttribute('aria-expanded', map.classList.contains('open'));
+    mapTrigger.setAttribute('aria-label', map.classList.contains('open') ? 'Close Map' : 'Open Map');
+    mapTrigger.setAttribute('aria-pressed', map.classList.contains('open'));
+  });
+
+
 });
