@@ -945,6 +945,8 @@ button:hover, .button:hover {
   top: calc(100vh - 5.125em);
   -webkit-transition: top 0.5s ease-in-out;
   transition: top 0.5s ease-in-out;
+  -ms-flex-positive: 1;
+      flex-grow: 1;
 }
 #map-wrap.open {
   top: 0;
@@ -956,6 +958,10 @@ button:hover, .button:hover {
   #map-wrap {
     position: relative;
     top: 0;
+    width: auto;
+    -webkit-box-flex: 1;
+        -ms-flex-positive: 1;
+            flex-grow: 1;
   }
 }
 
@@ -965,6 +971,7 @@ button:hover, .button:hover {
 }
 @media screen and (min-width: 600px) {
   #map {
-    height: 100vh;
+    width: auto;
+    height: 100%;
   }
 }
