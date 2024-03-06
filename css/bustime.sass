@@ -412,13 +412,9 @@ button, .button
     height: auto
 
 .bottom-buttons
-  position: absolute
-  bottom: 0
-  left: 0
   width: 100vw
   background: $black2
   height: $bottom-buttons-height
-  z-index: 101
   padding: 0 $content-padding
   display: flex
   align-items: center
@@ -433,6 +429,8 @@ button, .button
       background-size: $sidebar-switch auto
       background-position: center
       +text-outline($white, .125em)
+      .hide-label
+        display: none
     &#refresh
       flex-grow: 0
       white-space: nowrap
@@ -442,8 +440,6 @@ button, .button
         font-weight: normal
       .updated
         display: none
-  &.open
-    bottom: calc(100vh - $bottom-buttons-height)
   +mq($four)
     button
       &#refresh
@@ -453,17 +449,27 @@ button, .button
   +mq($sidebar-switch)
     display: none
 
-#map
+#map-wrap
   flex: 1
   position: absolute
   z-index: 100
   width: 100vw
   height: 100vh
-  top: 110vh
   left: 0
-  transition: top .5s ease-out
+  top: calc(100vh - $bottom-buttons-height)
+  transition: top .5s ease-in-out
   &.open
-    top: $bottom-buttons-height
+    top: 0
+    #map-trigger
+      .hide-label
+        display: inline
   +mq($sidebar-switch)
     position: relative  
     top: 0
+
+#map
+  width: 100vw
+  height: calc(100vh - $bottom-buttons-height)
+  +mq($sidebar-switch)
+    height: 100vh
+  

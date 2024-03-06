@@ -39,8 +39,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var map = document.getElementById('map');
 
   mapTrigger.addEventListener('click', function() {
-    map.classList.toggle('open');
-    mapTrigger.parentElement.classList.toggle('open');
+    mapWrap = document.getElementById('map-wrap');
+    
+    mapWrap.classList.toggle('open');
 
     mapTrigger.setAttribute('aria-expanded', map.classList.contains('open'));
     mapTrigger.setAttribute('aria-label', map.classList.contains('open') ? 'Close Map' : 'Open Map');
