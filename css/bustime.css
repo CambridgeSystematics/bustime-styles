@@ -1003,10 +1003,12 @@ button:hover, .button:hover {
 .bottom-buttons button#refresh .updated {
   display: none;
 }
-@media screen and (min-width: 400px) {
-  .bottom-buttons button#refresh .updated {
-    display: inline;
-  }
+.bottom-buttons button:focus {
+  border-color: inherit;
+  outline: 2px solid #f2a900;
+}
+.bottom-buttons button button#refresh .updated {
+  display: inline;
 }
 @media screen and (min-width: 600px) {
   .bottom-buttons {

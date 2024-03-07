@@ -480,7 +480,10 @@ button, .button
         font-weight: normal
       .updated
         display: none
-  +mq($four)
+    &:focus
+      border-color: inherit
+      outline: $medium-border solid $mta-yellow
+    +mq($four)
     button
       &#refresh
         .updated
