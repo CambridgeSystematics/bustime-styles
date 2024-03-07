@@ -308,7 +308,7 @@ button, .button
   width: 100%
   background-color: $ui-gray
   // overflow: hidden
-  box-shadow: .25em .25em .5em 0 rgba($black, 0.25)
+  
   position: relative 
   z-index: 1
   display: inline-flex
@@ -414,6 +414,7 @@ button, .button
       position: relative 
       top: -1px
   +mq($sidebar-switch)
+    box-shadow: .25em .25em .5em 0 rgba($black, 0.25)
     width: $sidebar-width
     height: auto
 
@@ -475,6 +476,7 @@ button, .button
     top: 0
     width: auto
     flex-grow: 1
+    z-index: 0
 
 #map
   width: 100vw
