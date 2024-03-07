@@ -18,8 +18,9 @@
   <h1 class="visually-hidden">MTA Bus Time Home</h1>
   <div class="main-body">
     <div id="sidebar">
-      <div class="header">
+      <header class="header">
         <img src="/img/bustime-logo.png" alt="MTA Bus Time" class="logo">
+        <nav>
         <ul class="menu">
           <li><a href="/">Home</a></li>
           <li><a href="#">Text</a></li>
@@ -28,7 +29,8 @@
           <li><a href="#">Developers</a></li>
           <li><a href="#">Help</a></li>
         </ul>
-      </div>
+        </nav>
+      </header>
       <form action="" id="search" role="search" aria-label="Search an intersection, bus route or bus stop code">
         <div class="search-field-wrap">
           <label for="search-input" class="visually-hidden">Search</label>
@@ -46,26 +48,26 @@
           <h2>Try these example searches:</h2>
           <ul>
             <li>Route: 
-              <ul class="links">
-                <li><a href="#" aria-label="Navigate to B63 Bus Route">B63</a></li>
-                <li><a href="#" aria-label="Navigate to M5 Bus Route">M5</a></li>
-                <li><a href="#" aria-label="Navigate to Bx1 Bus Route">Bx1</a></li>
+              <ul>
+                <li><a href="#">B63</a></li>
+                <li><a href="#">M5</a></li>
+                <li><a href="#">Bx1</a></li>
               </ul>
             </li>
             <li>Intersection: 
-              <ul class="links">
-                <li><a href="#" aria-label="Navigate to bus routes near Main street and Kissena Boulevard">Main st and Kissena Bl</a></li>
+              <ul>
+                <li><a href="#">Main st and Kissena Bl</a></li>
               </ul>
             </li>
             <li>Stop Code: 
-              <ul class="links">
-                <li><a href="#" aria-label="Navigate to Bus Stop code 200884">200884</a></li>
+              <ul>
+                <li><a href="#">200884</a></li>
               </ul>
             </li>
           </ul>
-          <ul class="menu icon-menu">
+          <ul class="menu icon-menu" role="menu">
             <li>
-              <a href="#" aria-label="Navigate to Available Routes">
+              <a href="#">
                 <span class="svg-icon-wrap" role="presentation" aria-hidden="true">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
                     <path class="blue" d="M0 3.333a2.083 2.083 0 1 0 4.167 0 2.083 2.083 0 0 0-4.167 0ZM7.083 4.167h12.084a.833.833 0 0 0 0-1.667H7.083a.833.833 0 0 0 0 1.667ZM0 10a2.083 2.083 0 1 0 4.167 0A2.083 2.083 0 0 0 0 10ZM19.167 9.167H7.083a.833.833 0 0 0 0 1.666h12.084a.834.834 0 0 0 0-1.666ZM0 16.667a2.083 2.083 0 1 0 4.167 0 2.083 2.083 0 0 0-4.167 0ZM19.167 15.833H7.083a.833.833 0 1 0 0 1.667h12.084a.833.833 0 0 0 0-1.667Z"/>
@@ -77,7 +79,7 @@
           </ul>
         </div>
         <div class="footer">
-          <ul class="menu icon-menu">
+          <ul class="menu icon-menu" role="menu">
             <li class="parent">
               <button id="favorites-menu-trigger" class="sub-menu-trigger" aria-haspopup="true" aria-expanded="false" aria-label="Toggle Favorites Menu">
 
