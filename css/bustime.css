@@ -901,7 +901,7 @@ button:hover, .button:hover {
 .bottom-buttons button {
   border-color: transparent;
 }
-.bottom-buttons button#map-trigger {
+.bottom-buttons button#map-toggle {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -910,7 +910,7 @@ button:hover, .button:hover {
   background-position: center;
   text-shadow: -0.125em -0.125em 0 #fff, 0.125em -0.125em 0 #fff, -0.125em 0.125em 0 #fff, 0.125em 0.125em 0 #fff;
 }
-.bottom-buttons button#map-trigger .hide-label {
+.bottom-buttons button#map-toggle .hide-label {
   display: none;
 }
 .bottom-buttons button#refresh {
@@ -956,7 +956,7 @@ button:hover, .button:hover {
 #map-wrap.open {
   top: 0;
 }
-#map-wrap.open #map-trigger .hide-label {
+#map-wrap.open #map-toggle .hide-label {
   display: inline;
 }
 @media screen and (min-width: 600px) {

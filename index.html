@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/bustime.css">
 
     <!-- Link to JavaScript file -->
-    <script defer src="js/bustime.js?v=1.0.02"></script>
+    <script defer src="js/bustime.js?v=1.0.03"></script>
 </head>
 <body>
   <h1 class="visually-hidden">MTA Bus Time Home</h1>
@@ -29,10 +29,10 @@
           <li><a href="#">Help</a></li>
         </ul>
       </div>
-      <form action="" id="search" role="search" aria-label="Site Search">
+      <form action="" id="search" role="search" aria-label="Search an intersection, bus route or bus stop code">
         <div class="search-field-wrap">
           <label for="search-input" class="visually-hidden">Search</label>
-          <input type="text" id="search-input" placeholder="Search" aria-autocomplete="list" aria-haspopup="listbox" autocomplete="off" aria-controls="search-suggestions">
+          <input type="text" id="search-input" placeholder="Search" autocomplete="off">
           <button type="submit" aria-label="Submit Search">
             <img src="/img/icon/search_white.svg" alt="Submit Search">
           </button>
@@ -68,7 +68,7 @@
               <a href="#" aria-label="Navigate to Available Routes">
                 <span class="svg-icon-wrap" role="presentation" aria-hidden="true">
                   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="none">
-                      <path class="blue" d="M0 3.333a2.083 2.083 0 1 0 4.167 0 2.083 2.083 0 0 0-4.167 0ZM7.083 4.167h12.084a.833.833 0 0 0 0-1.667H7.083a.833.833 0 0 0 0 1.667ZM0 10a2.083 2.083 0 1 0 4.167 0A2.083 2.083 0 0 0 0 10ZM19.167 9.167H7.083a.833.833 0 0 0 0 1.666h12.084a.834.834 0 0 0 0-1.666ZM0 16.667a2.083 2.083 0 1 0 4.167 0 2.083 2.083 0 0 0-4.167 0ZM19.167 15.833H7.083a.833.833 0 1 0 0 1.667h12.084a.833.833 0 0 0 0-1.667Z"/>
+                    <path class="blue" d="M0 3.333a2.083 2.083 0 1 0 4.167 0 2.083 2.083 0 0 0-4.167 0ZM7.083 4.167h12.084a.833.833 0 0 0 0-1.667H7.083a.833.833 0 0 0 0 1.667ZM0 10a2.083 2.083 0 1 0 4.167 0A2.083 2.083 0 0 0 0 10ZM19.167 9.167H7.083a.833.833 0 0 0 0 1.666h12.084a.834.834 0 0 0 0-1.666ZM0 16.667a2.083 2.083 0 1 0 4.167 0 2.083 2.083 0 0 0-4.167 0ZM19.167 15.833H7.083a.833.833 0 1 0 0 1.667h12.084a.833.833 0 0 0 0-1.667Z"/>
                   </svg>
                 </span>
                 <span class="label">Available Routes</span>
@@ -155,7 +155,7 @@
           </span>
           Refresh <span class="updated-at">(<span class="updated">updated </span>4:13 PM)</span>
         </button>
-        <button id="map-trigger" class="button" aria-controls="map" aria-expanded="false" aria-pressed="false"><span class="hide-label">Hide </span>Map</button>
+        <button id="map-toggle" class="button" aria-controls="map" aria-expanded="false" aria-pressed="false" aria-label="Toggle Map Visibility (currently hidden)"><span class="hide-label">Hide </span>Map</button>
       </div>
       <div id="map">
         <iframe
