@@ -21,7 +21,8 @@ body
 a
   color: $black
   text-decoration: underline
-  &:hover, &:focus
+  display: inline-block
+  &:hover
     color: $mta-blue
     text-decoration: none
 
@@ -58,6 +59,8 @@ ul
           margin: 0
           &::before
             content: none     
+          a
+            +yellow-bottom-focus
 
 button, .button
   font-size: 1em
@@ -370,24 +373,10 @@ button, .button
         text-decoration: none
         display: inline-block
         position: relative
-        &::after
-          content: ''
-          position: absolute
-          left: 0
-          right: 0
-          bottom: -#{$thick-border}
-          height: $medium-border
-          background-color: $mta-yellow
-          opacity: 0
-          transition: opacity .25s ease-in-out
+        +yellow-bottom-focus
         &:hover
           color: $white
           text-decoration: underline
-        &:focus
-          outline: none
-          border: none
-          &::after
-            opacity: 1
   #search
     padding: $content-padding
     background: $mta-blue
