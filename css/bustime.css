@@ -717,13 +717,46 @@ button:hover, .button:hover {
   padding-top: 0.5em;
   border-bottom: 0.25em solid #ddd;
 }
-#sidebar .header .logo {
+#sidebar .header .logo-link {
   display: block;
   width: 100%;
   height: auto;
   max-width: 100%;
   margin: 0 0 1.25em 0;
   padding: 0;
+  position: relative;
+}
+#sidebar .header .logo-link::after {
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+  content: "";
+  position: absolute;
+  right: 0;
+  bottom: -4px;
+  left: 0;
+  background-color: #f2a900;
+  height: 4px;
+}
+#sidebar .header .logo-link .logo {
+  display: inline-block;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 0;
+  opacity: 1;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+#sidebar .header .logo-link:hover .logo {
+  opacity: 0.75;
+}
+#sidebar .header .logo-link:focus {
+  outline: none;
+  border: none;
+}
+#sidebar .header .logo-link:focus::after {
+  opacity: 1;
 }
 #sidebar .header .menu {
   display: -webkit-box;
@@ -743,10 +776,31 @@ button:hover, .button:hover {
 #sidebar .header .menu a {
   color: #fff;
   text-decoration: none;
+  display: inline-block;
+  position: relative;
 }
-#sidebar .header .menu a:hover, #sidebar .header .menu a:focus {
+#sidebar .header .menu a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -4px;
+  height: 2px;
+  background-color: #f2a900;
+  opacity: 0;
+  -webkit-transition: opacity 0.25s ease-in-out;
+  transition: opacity 0.25s ease-in-out;
+}
+#sidebar .header .menu a:hover {
   color: #fff;
   text-decoration: underline;
+}
+#sidebar .header .menu a:focus {
+  outline: none;
+  border: none;
+}
+#sidebar .header .menu a:focus::after {
+  opacity: 1;
 }
 #sidebar #search {
   padding: 1em;

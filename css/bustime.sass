@@ -322,13 +322,40 @@ button, .button
     padding: $content-padding
     padding-top: .5em
     border-bottom: .25em solid $border-gray
-    .logo
+    .logo-link
       display: block
       width: 100%
       height: auto
       max-width: 100%
       margin: 0 0 1.25em 0
       padding: 0
+      position: relative
+      &::after
+        opacity: 0
+        transition: opacity .25s ease-in-out
+        content: ''
+        position: absolute
+        right: 0
+        bottom: -#{$thick-border}
+        left: 0
+        background-color: $mta-yellow
+        height: $thick-border
+      .logo
+        display: inline-block
+        width: 100%
+        height: auto
+        margin: 0
+        padding: 0
+        opacity: 1
+        transition: opacity .25s ease-in-out
+      &:hover
+        .logo
+          opacity: .75
+      &:focus
+        outline: none
+        border: none
+        &::after
+          opacity: 1
     .menu
       display: flex
       flex-wrap: nowrap
@@ -341,9 +368,26 @@ button, .button
       a
         color: $white
         text-decoration: none
-        &:hover, &:focus
+        display: inline-block
+        position: relative
+        &::after
+          content: ''
+          position: absolute
+          left: 0
+          right: 0
+          bottom: -#{$thick-border}
+          height: $medium-border
+          background-color: $mta-yellow
+          opacity: 0
+          transition: opacity .25s ease-in-out
+        &:hover
           color: $white
           text-decoration: underline
+        &:focus
+          outline: none
+          border: none
+          &::after
+            opacity: 1
   #search
     padding: $content-padding
     background: $mta-blue
