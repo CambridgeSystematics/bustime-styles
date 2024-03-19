@@ -1,5 +1,48 @@
+//-----------
+// below two functions are used to get the URL parameters and load the content based on the URL parameter, so we can load different bustime views for styling in just one HTML file, this should not move over
+//-----------
+
+// Function to get URL parameters
+function getUrlParams() {
+  const params = {};
+  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(match, key, value) {
+    params[key] = decodeURIComponent(value);
+  });
+  return params;
+}
+
+// Function to load content based on URL parameter
+function loadContent() {
+  const urlParams = getUrlParams();
+  let content = urlParams['content'];
+
+  // If content parameter is not specified, default to "home"
+  if (!content) {
+    content = "home";
+  }
+
+  // Use AJAX to fetch content from HTML file
+  const xhr = new XMLHttpRequest();
+  xhr.onreadystatechange = function() {
+    if (xhr.readyState === XMLHttpRequest.DONE) {
+      if (xhr.status === 200) {
+        // Inject fetched content into the #app div
+        document.getElementById('app').innerHTML = xhr.responseText;
+      } else {
+        console.error('Failed to fetch content');
+      }
+    }
+  };
+
+  // Fetch HTML file from the content directory based on URL parameter
+  xhr.open('GET', 'content/' + content + '.html', true);
+  xhr.send();
+}
+
 document.addEventListener('DOMContentLoaded', function() {
 
+  // Load content based on URL parameter, so we can load different bustime views for styling in just one HTML file, this should not move over
+  loadContent();
 
   // sub menus open and close
   var subMenuTriggers = document.querySelectorAll('.sub-menu-trigger');
