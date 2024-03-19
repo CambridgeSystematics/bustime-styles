@@ -37,6 +37,13 @@ function loadContent() {
   // Fetch HTML file from the content directory based on URL parameter
   xhr.open('GET', 'content/' + content + '.html', true);
   xhr.send();
+
+  // Set value of #search-input to the search parameter
+  const searchParam = urlParams['search'];
+  if (searchParam) {
+    document.getElementById('search-input').value = searchParam;
+    window.console.log('searchParam: ' + searchParam);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', function() {
