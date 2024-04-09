@@ -552,3 +552,19 @@ button, .button
   +card-shadow
   >.card-header
     border-bottom: $thick-border solid $border-gray
+
+.inner-card
+  margin: 0 $content-padding/2
+  font-size: .875em
+  .card-title
+    border: none
+    background: transparent
+  &:not(.service-alert)
+    .card-title
+      padding-left: 0
+      padding-right: 0
+  &.service-alert
+    .card-title
+      border: 1px solid $border-gray
+      background-color: $ui-gray
+      font-weight: bold

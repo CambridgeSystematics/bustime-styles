@@ -1099,3 +1099,21 @@ button:hover, .button:hover {
 .card > .card-header {
   border-bottom: 4px solid #ddd;
 }
+
+.inner-card {
+  margin: 0 0.5em;
+  font-size: 0.875em;
+}
+.inner-card .card-title {
+  border: none;
+  background: transparent;
+}
+.inner-card:not(.service-alert) .card-title {
+  padding-left: 0;
+  padding-right: 0;
+}
+.inner-card.service-alert .card-title {
+  border: 1px solid #ddd;
+  background-color: #f3f3f3;
+  font-weight: bold;
+}
