@@ -41,6 +41,33 @@ $sixteen: 1600px
 
 $sidebar-switch: $six
 
+// MEDIA QUERIES
+
+=mq($var)
+  @media screen and (min-width: #{$var})
+    @content
+
+=mq-reverse($var)
+  @media screen and (max-width: $var - 1px)
+    @content
+
+=mq-minmax($min,$max)
+  @media screen and (max-width: #{$max} - 1px) and (min-width: #{$min})
+    @content
+
+=mq-height($var)
+  @media screen and (min-height: #{$var})
+    @content
+
+=mq-height-reverse($var)
+  @media screen and (max-height: #{$var} - 1px)
+    @content
+
+=mq-ie
+  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
+    @content
+    
+
 
 // mixins
 
@@ -97,29 +124,8 @@ $sidebar-switch: $six
 =yellow-bottom-focus-dark
   +focus-pseudo-underline($mta-yellow-ada)
 
-// MEDIA QUERIES
-
-=mq($var)
-  @media screen and (min-width: #{$var})
-    @content
-
-=mq-reverse($var)
-  @media screen and (max-width: $var - 1px)
-    @content
-
-=mq-minmax($min,$max)
-  @media screen and (max-width: #{$max} - 1px) and (min-width: #{$min})
-    @content
-
-=mq-height($var)
-  @media screen and (min-height: #{$var})
-    @content
-
-=mq-height-reverse($var)
-  @media screen and (max-height: #{$var} - 1px)
-    @content
-
-=mq-ie
-  @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)
-    @content
-    
+=card-shadow
+  box-shadow: 0px 0px 12px 0px rgba($black, 0.10)
+  
+=card-pad
+  padding: $content-padding $content-padding/2 $content-padding*.875 $content-padding/2

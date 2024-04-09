@@ -35,7 +35,7 @@ h1, h2, h3, h4, h5, h6
 h1
     
 ul
-  &:not(.menu)
+  &:not(.menu):not(.card-details)
     list-style: none
     padding: 0
     margin: 1em 0
@@ -521,3 +521,34 @@ button, .button
     width: auto
     height: 100%
   
+
+// shared object styles
+
+.cards-header
+  margin-bottom: $content-padding
+  +card-pad
+.card, .inner-card
+  >.card-header
+    display: flex
+    .card-title
+      +card-pad
+      flex-grow: 1
+      text-align: left
+      line-height: 1.25
+  >.card-details
+    list-style: none
+    margin: 0
+    +card-pad
+  &.collapsible
+    &.collapsed
+      .card-content
+        max-height: 0
+        overflow: hidden
+        transition: max-height .5s ease-in-out
+
+.card
+  background-color: $white
+  border: 1px solid $border-gray
+  +card-shadow
+  >.card-header
+    border-bottom: $thick-border solid $border-gray

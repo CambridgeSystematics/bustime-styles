@@ -42,7 +42,6 @@ function loadContent() {
   const searchParam = urlParams['search'];
   if (searchParam) {
     document.getElementById('search-input').value = searchParam;
-    window.console.log('searchParam: ' + searchParam);
   }
 }
 
