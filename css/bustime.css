@@ -531,15 +531,7 @@ button:hover, .button:hover {
   line-height: 1.25;
 }
 .icon-menu li a::after, .icon-menu li button::after {
-  content: "";
-  width: 1.125em;
-  height: 1.125em;
   background-image: url(/img/icon/right-caret_blue.svg);
-  background-size: auto 100%;
-  background-repeat: no-repeat;
-  background-position: center right;
-  display: inline-block;
-  margin-right: 0.25em;
 }
 .icon-menu > li {
   position: relative;
@@ -637,13 +629,6 @@ button:hover, .button:hover {
   height: 1.3em;
   background-image: url(/img/icon/bus-stop.svg);
 }
-.icon-menu > li.parent > a::after, .icon-menu > li.parent > button::after {
-  content: "";
-  -webkit-transform: rotate(90deg);
-          transform: rotate(90deg);
-  -webkit-transform-origin: center;
-          transform-origin: center;
-}
 .icon-menu > li.open::after {
   opacity: 1;
   -webkit-transition: opacity 0.25s ease-in-out;
@@ -657,8 +642,6 @@ button:hover, .button:hover {
 }
 .icon-menu > li.open > a::after, .icon-menu > li.open > button::after {
   background-image: url(/img/icon/right-caret_white.svg);
-  -webkit-transform: rotate(-90deg);
-          transform: rotate(-90deg);
 }
 .icon-menu > li.open > a .svg-icon-wrap svg, .icon-menu > li.open > button .svg-icon-wrap svg {
   -webkit-transition: fill 0.125s ease-in-out;
@@ -1060,6 +1043,44 @@ button:hover, .button:hover {
   }
 }
 
+.caret-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 0.5em;
+}
+.caret-toggle .label {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+}
+.caret-toggle::after {
+  content: "";
+  -webkit-transform: rotate(90deg);
+          transform: rotate(90deg);
+  -webkit-transform-origin: center;
+          transform-origin: center;
+  -webkit-transition: -webkit-transform 0.25s ease-in-out;
+  transition: -webkit-transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out;
+  transition: transform 0.25s ease-in-out, -webkit-transform 0.25s ease-in-out;
+  width: 1.125em;
+  height: 1.125em;
+  background-image: url(/img/icon/right-caret_black.svg);
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center right;
+  display: inline-block;
+  margin-right: 0.25em;
+}
+.caret-toggle.open::after {
+  -webkit-transform: rotate(-90deg);
+          transform: rotate(-90deg);
+}
+
 .cards-header {
   margin-bottom: 1em;
   padding: 1em 0.5em 0.875em 0.5em;
@@ -1107,9 +1128,12 @@ button:hover, .button:hover {
 .inner-card .card-title {
   border: none;
   background: transparent;
+  border-radius: 0.25em;
 }
 .inner-card:not(.service-alert) .card-title {
   padding-left: 0;
+}
+.inner-card:not(.service-alert) .card-title:not(.caret-toggle) {
   padding-right: 0;
 }
 .inner-card.service-alert .card-title {

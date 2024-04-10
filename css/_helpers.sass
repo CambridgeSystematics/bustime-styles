@@ -129,3 +129,26 @@ $sidebar-switch: $six
   
 =card-pad
   padding: $content-padding $content-padding/2 $content-padding*.875 $content-padding/2
+
+=caret-toggle
+  display: flex
+  justify-content: space-between
+  gap: .5em
+  .label
+    flex-grow: 1
+  &::after
+    content: ''
+    transform: rotate(90deg)
+    transform-origin: center
+    transition: transform .25s ease-in-out
+    width: 1.125em
+    height: 1.125em
+    background-image: url(/img/icon/right-caret_black.svg)
+    background-size: auto 100%
+    background-repeat: no-repeat
+    background-position: center right
+    display: inline-block
+    margin-right: .25em
+  &.open
+    &::after
+      transform: rotate(-90deg)

@@ -165,15 +165,7 @@ button, .button
         text-align: left
         line-height: 1.25
       &::after
-        content: ''
-        width: 1.125em
-        height: 1.125em
         background-image: url(/img/icon/right-caret_blue.svg)
-        background-size: auto 100%
-        background-repeat: no-repeat
-        background-position: center right
-        display: inline-block
-        margin-right: .25em
   >li
     position: relative
     &::after
@@ -246,12 +238,6 @@ button, .button
             width: 1.3em
             height: 1.3em
             background-image: url(/img/icon/bus-stop.svg)
-    &.parent
-      >a, >button
-        &::after
-          content: ''
-          transform: rotate(90deg)
-          transform-origin: center
     &.open
       &::after
         opacity: 1
@@ -263,7 +249,6 @@ button, .button
         border-bottom: $thick-border solid $mta-yellow
         &::after
           background-image: url(/img/icon/right-caret_white.svg)
-          transform: rotate(-90deg)
         .svg-icon-wrap
           svg
             transition: fill .125s ease-in-out
@@ -524,6 +509,9 @@ button, .button
 
 // shared object styles
 
+.caret-toggle
+  +caret-toggle
+
 .cards-header
   margin-bottom: $content-padding
   +card-pad
@@ -559,10 +547,12 @@ button, .button
   .card-title
     border: none
     background: transparent
+    +rounded
   &:not(.service-alert)
     .card-title
       padding-left: 0
-      padding-right: 0
+      &:not(.caret-toggle)
+        padding-right: 0
   &.service-alert
     .card-title
       border: 1px solid $border-gray

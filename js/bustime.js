@@ -86,6 +86,18 @@ document.addEventListener('DOMContentLoaded', function() {
     });
   });
 
+  // caret toggle buttons open and close (for icon rotation)
+  document.addEventListener('click', function(event) {
+    // Check if the clicked element or any of its ancestors have the class 'caret-toggle'
+    var target = event.target.closest('.caret-toggle');
+    if (target) {
+        // Toggle the 'open' class
+        target.classList.toggle('open');
+        console.log('caretToggle clicked');
+    }
+  });
+
+
   // map trigger open and close
   var mapToggle = document.getElementById('map-toggle');
   var map = document.getElementById('map');
