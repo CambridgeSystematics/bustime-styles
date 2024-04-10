@@ -152,7 +152,7 @@ button, .button
       text-decoration: none
       display: flex
       width: 100%
-      padding: 1em 0
+      padding: 1em .25em 1em .5em
       gap: .5em
       flex-grow: 1
       align-items: center
@@ -168,17 +168,8 @@ button, .button
         background-image: url(/img/icon/right-caret_blue.svg)
   >li
     position: relative
-    &::after
-      content: ''
-      position: absolute
-      z-index: -1
-      top: -1px
-      right: -#{$content-padding/2}
-      bottom: -1px
-      left: -#{$content-padding/2}
-      background-color: $mta-blue
-      opacity: 0
-      transition: opacity .125s ease-in-out
+    background-color: transparent
+    transition: background-color .125s ease-in-out
     .svg-icon-wrap
       svg
         transition: fill .125s ease-in-out .5s
@@ -203,13 +194,15 @@ button, .button
       max-height: 0
       overflow: hidden
       background-color: $white
-      transition: max-height .5s ease-in-out, border-bottom-width .25s ease-in-out, border-top-width .25s ease-in-out
+      transition: max-height .5s ease-in-out, margin .25s ease-in-out
       list-style: none
-      margin: 0
+      margin: 0 .5em
       padding: 0 $content-padding
       border-bottom-width: 0
       li
         a, button
+          padding-right: 0
+          padding-left: 0
           &::after
             position: relative
             left: 0
@@ -239,9 +232,10 @@ button, .button
             height: 1.3em
             background-image: url(/img/icon/bus-stop.svg)
     &.open
-      &::after
-        opacity: 1
-        transition: opacity .25s ease-in-out
+      // &::after
+      //   opacity: 1
+      //   transition: opacity .25s ease-in-out
+      background-color: $mta-blue
       >a, >button
         color: $white
         position: relative
@@ -276,6 +270,8 @@ button, .button
           left: -#{$content-padding/2}
           background-color: $ui-gray
           height: 1px
+      .sub-menu
+        margin: .5em
 
 // basic layout
 
@@ -303,7 +299,7 @@ button, .button
   flex-direction: column
   align-items: stretch
   align-content: stretch
-  height: calc(100vh - #{$button-height + 2em})
+  height: calc(100vh - #{$button-height + 2rem})
   .header
     background-color: $black2
     color: $white
@@ -514,7 +510,6 @@ button, .button
 
 .cards-header
   margin-bottom: $content-padding
-  +card-pad
 .card, .inner-card
   >.card-header
     display: flex

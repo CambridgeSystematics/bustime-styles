@@ -414,7 +414,7 @@ button:hover, .button:hover {
 
 .button {
   font-weight: bold;
-  padding: 1em;
+  padding: 1rem;
   border-radius: 0.25em;
   color: #0E61A9;
   background-color: #fff;
@@ -422,7 +422,7 @@ button:hover, .button:hover {
   line-height: 1;
 }
 .button.icon-button-left {
-  padding-left: 0.625em;
+  padding-left: 0.625rem;
 }
 .button.icon-button-left .icon {
   margin-right: 0.5em;
@@ -509,7 +509,7 @@ button:hover, .button:hover {
   display: -ms-flexbox;
   display: flex;
   width: 100%;
-  padding: 1em 0;
+  padding: 1em 0.25em 1em 0.5em;
   gap: 0.5em;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
@@ -535,19 +535,9 @@ button:hover, .button:hover {
 }
 .icon-menu > li {
   position: relative;
-}
-.icon-menu > li::after {
-  content: "";
-  position: absolute;
-  z-index: -1;
-  top: -1px;
-  right: -0.5em;
-  bottom: -1px;
-  left: -0.5em;
-  background-color: #0E61A9;
-  opacity: 0;
-  -webkit-transition: opacity 0.125s ease-in-out;
-  transition: opacity 0.125s ease-in-out;
+  background-color: transparent;
+  -webkit-transition: background-color 0.125s ease-in-out;
+  transition: background-color 0.125s ease-in-out;
 }
 .icon-menu > li .svg-icon-wrap svg {
   -webkit-transition: fill 0.125s ease-in-out 0.5s;
@@ -579,12 +569,16 @@ button:hover, .button:hover {
   max-height: 0;
   overflow: hidden;
   background-color: #fff;
-  -webkit-transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out, border-top-width 0.25s ease-in-out;
-  transition: max-height 0.5s ease-in-out, border-bottom-width 0.25s ease-in-out, border-top-width 0.25s ease-in-out;
+  -webkit-transition: max-height 0.5s ease-in-out, margin 0.25s ease-in-out;
+  transition: max-height 0.5s ease-in-out, margin 0.25s ease-in-out;
   list-style: none;
-  margin: 0;
-  padding: 0 1em;
+  margin: 0 0.5em;
+  padding: 0 1rem;
   border-bottom-width: 0;
+}
+.icon-menu > li .sub-menu li a, .icon-menu > li .sub-menu li button {
+  padding-right: 0;
+  padding-left: 0;
 }
 .icon-menu > li .sub-menu li a::after, .icon-menu > li .sub-menu li button::after {
   position: relative;
@@ -606,7 +600,7 @@ button:hover, .button:hover {
   font-size: 0.875em;
 }
 .icon-menu > li .sub-menu#favorites-menu .remove-favorite {
-  margin-bottom: 1em;
+  margin-bottom: 1rem;
 }
 .icon-menu > li .sub-menu#favorites-menu .favorite-route .label {
   border-left: 4px solid;
@@ -629,10 +623,8 @@ button:hover, .button:hover {
   height: 1.3em;
   background-image: url(/img/icon/bus-stop.svg);
 }
-.icon-menu > li.open::after {
-  opacity: 1;
-  -webkit-transition: opacity 0.25s ease-in-out;
-  transition: opacity 0.25s ease-in-out;
+.icon-menu > li.open {
+  background-color: #0E61A9;
 }
 .icon-menu > li.open > a, .icon-menu > li.open > button {
   color: #fff;
@@ -658,22 +650,25 @@ button:hover, .button:hover {
   background-color: transparent;
 }
 .icon-menu > li.open > a .sub-menu, .icon-menu > li.open > button .sub-menu {
-  padding: 0.5em 1em;
+  padding: 0.5rem 1rem;
   max-height: 200vh;
   opacity: 1;
   border-bottom: solid #0E61A9;
   border-top: solid #0E61A9;
-  border-bottom-width: 0.5em;
-  border-top-width: 0.5em;
+  border-bottom-width: 0.5rem;
+  border-top-width: 0.5rem;
 }
 .icon-menu > li.open + li.open::before {
   content: "";
   position: absolute;
   top: -1px;
-  right: -0.5em;
-  left: -0.5em;
+  right: -0.5rem;
+  left: -0.5rem;
   background-color: #f3f3f3;
   height: 1px;
+}
+.icon-menu > li.open .sub-menu {
+  margin: 0.5em;
 }
 
 .main-body {
@@ -712,12 +707,12 @@ button:hover, .button:hover {
           align-items: stretch;
   -ms-flex-line-pack: stretch;
       align-content: stretch;
-  height: calc(100vh - 5.125em);
+  height: calc(100vh - 5.125rem);
 }
 #sidebar .header {
   background-color: #202025;
   color: #fff;
-  padding: 1em;
+  padding: 1rem;
   padding-top: 0.5em;
   border-bottom: 0.25em solid #ddd;
 }
@@ -808,7 +803,7 @@ button:hover, .button:hover {
   text-decoration: underline;
 }
 #sidebar #search {
-  padding: 1em;
+  padding: 1rem;
   background: #0E61A9;
   color: #fff;
 }
@@ -888,7 +883,7 @@ button:hover, .button:hover {
           flex: 1;
 }
 #sidebar .search-instructions {
-  padding: 1em;
+  padding: 1rem;
   padding-top: 0;
   background: #0E61A9;
   color: #fff;
@@ -918,14 +913,14 @@ button:hover, .button:hover {
           justify-content: space-between;
 }
 #sidebar .sidebar-content .content {
-  padding: 1em;
+  padding: 1rem;
   padding-bottom: 0;
   -webkit-box-flex: 1;
       -ms-flex: 1 0 0px;
           flex: 1 0 0;
 }
 #sidebar .sidebar-content .footer {
-  padding: 1em;
+  padding: 1rem;
   padding-top: 0;
   position: relative;
   top: -1px;
@@ -942,8 +937,8 @@ button:hover, .button:hover {
 .bottom-buttons {
   width: 100vw;
   background: #202025;
-  height: 5.125em;
-  padding: 0 1em;
+  height: 5.125rem;
+  padding: 0 1rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -953,7 +948,7 @@ button:hover, .button:hover {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  gap: 1em;
+  gap: 1rem;
   -webkit-transition: bottom 0.5s ease-out;
   transition: bottom 0.5s ease-out;
 }
@@ -1008,7 +1003,7 @@ button:hover, .button:hover {
   width: 100vw;
   height: 100vh;
   left: 0;
-  top: calc(100vh - 5.125em);
+  top: calc(100vh - 5.125rem);
   -webkit-transition: top 0.5s ease-in-out;
   transition: top 0.5s ease-in-out;
   -ms-flex-positive: 1;
@@ -1034,7 +1029,7 @@ button:hover, .button:hover {
 
 #map {
   width: 100vw;
-  height: calc(100vh - 5.125em);
+  height: calc(100vh - 5.125rem);
 }
 @media screen and (min-width: 600px) {
   #map {
@@ -1082,8 +1077,7 @@ button:hover, .button:hover {
 }
 
 .cards-header {
-  margin-bottom: 1em;
-  padding: 1em 0.5em 0.875em 0.5em;
+  margin-bottom: 1rem;
 }
 
 .card > .card-header, .inner-card > .card-header {
@@ -1092,7 +1086,7 @@ button:hover, .button:hover {
   display: flex;
 }
 .card > .card-header .card-title, .inner-card > .card-header .card-title {
-  padding: 1em 0.5em 0.875em 0.5em;
+  padding: 1rem 0.5rem 0.875rem 0.5rem;
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -1102,7 +1096,7 @@ button:hover, .button:hover {
 .card > .card-details, .inner-card > .card-details {
   list-style: none;
   margin: 0;
-  padding: 1em 0.5em 0.875em 0.5em;
+  padding: 1rem 0.5rem 0.875rem 0.5rem;
 }
 .card.collapsible.collapsed .card-content, .inner-card.collapsible.collapsed .card-content {
   max-height: 0;
@@ -1122,7 +1116,7 @@ button:hover, .button:hover {
 }
 
 .inner-card {
-  margin: 0 0.5em;
+  margin: 0 0.5rem;
   font-size: 0.875em;
 }
 .inner-card .card-title {
