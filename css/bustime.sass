@@ -508,16 +508,23 @@ button, .button
 .caret-toggle
   +caret-toggle
 
+.cards
+  padding-bottom: $content-padding
+  display: flex
+  direction: column
+  gap: $content-padding
 .cards-header
   margin-bottom: $content-padding
 .card, .inner-card
   >.card-header
+    width: 100%
+    +card-pad
     display: flex
-    .card-title
-      +card-pad
+    justify-content: space-between
+    text-align: left
+    line-height: 1.25
+    .label
       flex-grow: 1
-      text-align: left
-      line-height: 1.25
   >.card-details
     list-style: none
     margin: 0
@@ -539,17 +546,18 @@ button, .button
 .inner-card
   margin: 0 $content-padding/2
   font-size: .875em
-  .card-title
+  border: none
+  background: transparent
+  +rounded
+  .card-header
     border: none
     background: transparent
-    +rounded
   &:not(.service-alert)
-    .card-title
+    .card-header
       padding-left: 0
       &:not(.caret-toggle)
         padding-right: 0
   &.service-alert
-    .card-title
-      border: 1px solid $border-gray
-      background-color: $ui-gray
-      font-weight: bold
+    border: 1px solid $border-gray
+    background-color: $ui-gray
+    font-weight: bold

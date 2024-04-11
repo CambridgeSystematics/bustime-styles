@@ -1076,22 +1076,35 @@ button:hover, .button:hover {
           transform: rotate(-90deg);
 }
 
+.cards {
+  padding-bottom: 1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  direction: column;
+  gap: 1rem;
+}
+
 .cards-header {
   margin-bottom: 1rem;
 }
 
 .card > .card-header, .inner-card > .card-header {
+  width: 100%;
+  padding: 1rem 0.5rem 0.875rem 0.5rem;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  text-align: left;
+  line-height: 1.25;
 }
-.card > .card-header .card-title, .inner-card > .card-header .card-title {
-  padding: 1rem 0.5rem 0.875rem 0.5rem;
+.card > .card-header .label, .inner-card > .card-header .label {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-  text-align: left;
-  line-height: 1.25;
 }
 .card > .card-details, .inner-card > .card-details {
   list-style: none;
@@ -1118,19 +1131,21 @@ button:hover, .button:hover {
 .inner-card {
   margin: 0 0.5rem;
   font-size: 0.875em;
-}
-.inner-card .card-title {
   border: none;
   background: transparent;
   border-radius: 0.25em;
 }
-.inner-card:not(.service-alert) .card-title {
+.inner-card .card-header {
+  border: none;
+  background: transparent;
+}
+.inner-card:not(.service-alert) .card-header {
   padding-left: 0;
 }
-.inner-card:not(.service-alert) .card-title:not(.caret-toggle) {
+.inner-card:not(.service-alert) .card-header:not(.caret-toggle) {
   padding-right: 0;
 }
-.inner-card.service-alert .card-title {
+.inner-card.service-alert {
   border: 1px solid #ddd;
   background-color: #f3f3f3;
   font-weight: bold;
