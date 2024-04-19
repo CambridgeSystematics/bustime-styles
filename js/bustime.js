@@ -12,6 +12,14 @@ function getUrlParams() {
 }
 
 // Function to load content based on URL parameter
+function getUrlParams() {
+  const params = {};
+  window.location.search.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(match, key, value) {
+    params[key] = decodeURIComponent(value);
+  });
+  return params;
+}
+
 function loadContent() {
   const urlParams = getUrlParams();
   let content = urlParams['content'];
@@ -42,6 +50,12 @@ function loadContent() {
   const searchParam = urlParams['search'];
   if (searchParam) {
     document.getElementById('search-input').value = searchParam;
+  }
+
+  // display refresh button if param exists
+  const refresh = urlParams['refresh'];
+  if (refresh) {
+    document.getElementById('refresh').style.display = 'block';
   }
 }
 
