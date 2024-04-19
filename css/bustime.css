@@ -318,6 +318,7 @@ body {
   min-width: 100vw;
   min-height: 100vh;
   position: relative;
+  color: #000;
 }
 body * {
   -webkit-box-sizing: border-box;
@@ -356,17 +357,17 @@ p {
   padding: 0;
 }
 
-ul:not(.menu):not(.card-details):not(.route-stops) {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) {
   list-style: none;
   padding: 0;
   margin: 1em 0;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li {
   margin: 0 0 0.5em 0;
   padding: 0 0 0 0.75em;
   position: relative;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li::before {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li::before {
   content: "■";
   display: inline-block;
   font-size: 0.375em;
@@ -374,21 +375,21 @@ ul:not(.menu):not(.card-details):not(.route-stops) li::before {
   left: 0;
   top: 0.875em;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li ul.links {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li ul.links {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   gap: 0.75em;
   margin: 0 0 0 0.25em;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li ul.links li {
   padding: 0;
   margin: 0;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li::before {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li ul.links li::before {
   content: none;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a::after {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li ul.links li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -400,12 +401,12 @@ ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a::after {
   -webkit-transition: opacity 0.25s ease-in-out;
   transition: opacity 0.25s ease-in-out;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a:focus {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li ul.links li a:focus {
   outline: none;
   border: none;
   text-decoration: none;
 }
-ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a:focus::after {
+ul:not(.menu):not(.card-details):not(.route-stops):not(.approaching-buses) li ul.links li a:focus::after {
   opacity: 1;
 }
 
@@ -1172,17 +1173,32 @@ button:hover, .button:hover {
 .inner-card.service-alert.open .card-content {
   padding: 1rem;
 }
+.inner-card.route-direction {
+  position: relative;
+}
+.inner-card.route-direction::after {
+  content: "";
+  display: block;
+  width: 100%;
+  height: 1px;
+  background-color: #000;
+  position: absolute;
+  bottom: -1px;
+}
+.inner-card.route-direction:last-child::after {
+  display: none;
+}
 
 .route-stops {
   list-style: none;
   margin: 0;
   padding: 0;
 }
-.route-stops li {
+.route-stops > li {
   padding: 0 0 1em 1.5em;
   position: relative;
 }
-.route-stops li::before {
+.route-stops > li::before {
   content: "";
   display: inline-block;
   width: 0.5em;
@@ -1192,10 +1208,12 @@ button:hover, .button:hover {
   position: absolute;
   left: 0;
   top: 0.25em;
+  -webkit-transform: translateY(-1px);
+          transform: translateY(-1px);
   border: 2px solid #000;
   z-index: 2;
 }
-.route-stops li::after {
+.route-stops > li::after {
   content: "";
   display: inline-block;
   width: 2px;
@@ -1208,12 +1226,85 @@ button:hover, .button:hover {
           transform: translateX(1px);
   z-index: 1;
 }
-.route-stops li:last-child::after {
+.route-stops > li:last-child::after {
   display: none;
+}
+.route-stops > li.has-info {
+  font-weight: bold;
 }
 .route-stops a {
   text-decoration: none;
 }
 .route-stops a:hover, .route-stops a:focus {
   text-decoration: underline;
+}
+.route-stops .approaching-buses {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-weight: normal;
+}
+.route-stops .approaching-buses li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+  gap: 0.5em;
+  padding: 0.25em 0;
+}
+.route-stops .approaching-buses li .bus {
+  width: 4.5em;
+  -webkit-box-flex: 0;
+      -ms-flex-positive: 0;
+          flex-grow: 0;
+  -ms-flex-negative: 0;
+      flex-shrink: 0;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+}
+.route-stops .approaching-buses li .bus::before, .route-stops .approaching-buses li .bus::after {
+  content: "";
+  display: inline-block;
+  width: 0.875em;
+  height: 0.875em;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  margin-right: 0.25em;
+  background-image: url(/img/icon/bus.svg);
+  vertical-align: top;
+  -webkit-transform: translateY(2px);
+          transform: translateY(2px);
+  -webkit-box-ordinal-group: -1;
+      -ms-flex-order: -2;
+          order: -2;
+}
+.route-stops .approaching-buses li .bus::after {
+  content: none;
+  -webkit-box-ordinal-group: 0;
+      -ms-flex-order: -1;
+          order: -1;
+  background-image: url(/img/icon/stroller.svg);
+}
+.route-stops .approaching-buses li .bus.stroller-friendly::after {
+  content: "";
+}
+.route-stops .approaching-buses li .bus-info {
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  display: -webkit-inline-box;
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.route-stops .approaching-buses .approaching {
+  color: #3A3A49;
+  font-weight: bold;
 }
