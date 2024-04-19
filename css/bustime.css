@@ -1038,7 +1038,7 @@ button:hover, .button:hover {
   }
 }
 
-.caret-toggle {
+.collapse-trigger {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1047,12 +1047,12 @@ button:hover, .button:hover {
           justify-content: space-between;
   gap: 0.5em;
 }
-.caret-toggle .label {
+.collapse-trigger .label {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
 }
-.caret-toggle::after {
+.collapse-trigger::after {
   content: "";
   -webkit-transform: rotate(90deg);
           transform: rotate(90deg);
@@ -1071,9 +1071,16 @@ button:hover, .button:hover {
   display: inline-block;
   margin-right: 0.25em;
 }
-.caret-toggle.open::after {
+.collapse-trigger.open::after {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
+}
+
+.collapsible .collapse-content {
+  max-height: 0;
+  overflow: hidden;
+  -webkit-transition: max-height 0.5s ease-in-out;
+  transition: max-height 0.5s ease-in-out;
 }
 
 .cards {
@@ -1111,12 +1118,6 @@ button:hover, .button:hover {
   margin: 0;
   padding: 1rem 0.5rem 0.875rem 0.5rem;
 }
-.card.collapsible.collapsed .card-content, .inner-card.collapsible.collapsed .card-content {
-  max-height: 0;
-  overflow: hidden;
-  -webkit-transition: max-height 0.5s ease-in-out;
-  transition: max-height 0.5s ease-in-out;
-}
 
 .card {
   background-color: #fff;
@@ -1142,7 +1143,7 @@ button:hover, .button:hover {
 .inner-card:not(.service-alert) .card-header {
   padding-left: 0;
 }
-.inner-card:not(.service-alert) .card-header:not(.caret-toggle) {
+.inner-card:not(.service-alert) .card-header:not(.collapse-trigger) {
   padding-right: 0;
 }
 .inner-card.service-alert {

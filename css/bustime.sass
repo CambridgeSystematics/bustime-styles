@@ -505,8 +505,15 @@ button, .button
 
 // shared object styles
 
-.caret-toggle
+.collapse-trigger
   +caret-toggle
+
+.collapsible
+  .collapse-content
+    max-height: 0
+    overflow: hidden
+    transition: max-height .5s ease-in-out
+
 
 .cards
   padding-bottom: $content-padding
@@ -529,12 +536,6 @@ button, .button
     list-style: none
     margin: 0
     +card-pad
-  &.collapsible
-    &.collapsed
-      .card-content
-        max-height: 0
-        overflow: hidden
-        transition: max-height .5s ease-in-out
 
 .card
   background-color: $white
@@ -555,7 +556,7 @@ button, .button
   &:not(.service-alert)
     .card-header
       padding-left: 0
-      &:not(.caret-toggle)
+      &:not(.collapse-trigger)
         padding-right: 0
   &.service-alert
     border: 1px solid $border-gray
