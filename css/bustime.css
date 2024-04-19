@@ -351,6 +351,11 @@ h1, h2, h3, h4, h5, h6 {
   padding: 0;
 }
 
+p {
+  margin: 0 0 1em 0;
+  padding: 0;
+}
+
 ul:not(.menu):not(.card-details) {
   list-style: none;
   padding: 0;
@@ -1149,5 +1154,21 @@ button:hover, .button:hover {
 .inner-card.service-alert {
   border: 1px solid #ddd;
   background-color: #f3f3f3;
+}
+.inner-card.service-alert .card-header {
   font-weight: bold;
+  border-bottom: 0px solid #f2a900;
+  -webkit-transition: border-bottom 0.25s ease-in-out;
+  transition: border-bottom 0.25s ease-in-out;
+}
+.inner-card.service-alert .card-content {
+  padding: 0 1rem;
+  -webkit-transition: padding 0.25s ease-in-out;
+  transition: padding 0.25s ease-in-out;
+}
+.inner-card.service-alert.open .card-header {
+  border-bottom: 4px solid #f2a900;
+}
+.inner-card.service-alert.open .card-content {
+  padding: 1rem;
 }

@@ -32,7 +32,9 @@ h1, h2, h3, h4, h5, h6
   margin: 0
   padding: 0
 
-h1
+p
+  margin: 0 0 1em 0
+  padding: 0
     
 ul
   &:not(.menu):not(.card-details)
@@ -561,4 +563,16 @@ button, .button
   &.service-alert
     border: 1px solid $border-gray
     background-color: $ui-gray
-    font-weight: bold
+    .card-header
+      font-weight: bold
+      border-bottom: 0px solid $mta-yellow
+      transition: border-bottom .25s ease-in-out
+    .card-content
+      padding: 0 $content-padding
+      transition: padding .25s ease-in-out
+    &.open
+      .card-header
+        border-bottom: $thick-border solid $mta-yellow
+      .card-content
+        padding: $content-padding
+        

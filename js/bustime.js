@@ -50,7 +50,7 @@ document.addEventListener('DOMContentLoaded', function() {
   // Load content based on URL parameter, so we can load different bustime views for styling in just one HTML file, this should not move over
   loadContent();
 
-  // sub menus open and close
+  // sub menus open and close - this was replaced with the collapse trigger below
   // var subMenuTriggers = document.querySelectorAll('.sub-menu-trigger');
 
   // subMenuTriggers.forEach(function(trigger) {
@@ -85,6 +85,9 @@ document.addEventListener('DOMContentLoaded', function() {
   //     }
   //   });
   // });
+
+
+  // have to do clicks this way so they work on objects added after the page loads
 
   // collapse trigger buttons open and close (for icon rotation) and content reveal/toggle
   document.addEventListener('click', function(event) {
@@ -130,7 +133,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   // map trigger open and close
   var mapToggle = document.getElementById('map-toggle');
-  var map = document.getElementById('map');
+  // var map = document.getElementById('map');
   var mapWrap = document.getElementById('map-wrap');
 
   mapToggle.addEventListener('click', function() {
