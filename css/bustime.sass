@@ -37,7 +37,7 @@ p
   padding: 0
     
 ul
-  &:not(.menu):not(.card-details)
+  &:not(.menu):not(.card-details):not(.route-stops)
     list-style: none
     padding: 0
     margin: 1em 0
@@ -576,3 +576,40 @@ button, .button
       .card-content
         padding: $content-padding
         
+.route-stops
+  list-style: none
+  margin: 0
+  padding: 0
+  li
+    padding: 0 0 1em 1.5em
+    position: relative
+    &::before
+      content: ''
+      display: inline-block
+      width: .5em
+      height: .5em
+      background-color: currentColor
+      border-radius: 50%
+      position: absolute
+      left: 0
+      top: .25em
+      border: 2px solid $black
+      z-index: 2
+    &::after
+      content: ''
+      display: inline-block
+      width: 2px
+      background-color: $black
+      height: 100%
+      position: absolute
+      left: .25em
+      top: .25em
+      transform: translateX(1px)
+      z-index: 1
+    &:last-child
+      &::after
+        display: none
+  a
+    text-decoration: none
+    &:hover, &:focus
+      text-decoration: underline  

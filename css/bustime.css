@@ -356,17 +356,17 @@ p {
   padding: 0;
 }
 
-ul:not(.menu):not(.card-details) {
+ul:not(.menu):not(.card-details):not(.route-stops) {
   list-style: none;
   padding: 0;
   margin: 1em 0;
 }
-ul:not(.menu):not(.card-details) li {
+ul:not(.menu):not(.card-details):not(.route-stops) li {
   margin: 0 0 0.5em 0;
   padding: 0 0 0 0.75em;
   position: relative;
 }
-ul:not(.menu):not(.card-details) li::before {
+ul:not(.menu):not(.card-details):not(.route-stops) li::before {
   content: "■";
   display: inline-block;
   font-size: 0.375em;
@@ -374,21 +374,21 @@ ul:not(.menu):not(.card-details) li::before {
   left: 0;
   top: 0.875em;
 }
-ul:not(.menu):not(.card-details) li ul.links {
+ul:not(.menu):not(.card-details):not(.route-stops) li ul.links {
   display: -webkit-inline-box;
   display: -ms-inline-flexbox;
   display: inline-flex;
   gap: 0.75em;
   margin: 0 0 0 0.25em;
 }
-ul:not(.menu):not(.card-details) li ul.links li {
+ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li {
   padding: 0;
   margin: 0;
 }
-ul:not(.menu):not(.card-details) li ul.links li::before {
+ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li::before {
   content: none;
 }
-ul:not(.menu):not(.card-details) li ul.links li a::after {
+ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a::after {
   content: "";
   position: absolute;
   left: 0;
@@ -400,12 +400,12 @@ ul:not(.menu):not(.card-details) li ul.links li a::after {
   -webkit-transition: opacity 0.25s ease-in-out;
   transition: opacity 0.25s ease-in-out;
 }
-ul:not(.menu):not(.card-details) li ul.links li a:focus {
+ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a:focus {
   outline: none;
   border: none;
   text-decoration: none;
 }
-ul:not(.menu):not(.card-details) li ul.links li a:focus::after {
+ul:not(.menu):not(.card-details):not(.route-stops) li ul.links li a:focus::after {
   opacity: 1;
 }
 
@@ -1171,4 +1171,49 @@ button:hover, .button:hover {
 }
 .inner-card.service-alert.open .card-content {
   padding: 1rem;
+}
+
+.route-stops {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.route-stops li {
+  padding: 0 0 1em 1.5em;
+  position: relative;
+}
+.route-stops li::before {
+  content: "";
+  display: inline-block;
+  width: 0.5em;
+  height: 0.5em;
+  background-color: currentColor;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 0.25em;
+  border: 2px solid #000;
+  z-index: 2;
+}
+.route-stops li::after {
+  content: "";
+  display: inline-block;
+  width: 2px;
+  background-color: #000;
+  height: 100%;
+  position: absolute;
+  left: 0.25em;
+  top: 0.25em;
+  -webkit-transform: translateX(1px);
+          transform: translateX(1px);
+  z-index: 1;
+}
+.route-stops li:last-child::after {
+  display: none;
+}
+.route-stops a {
+  text-decoration: none;
+}
+.route-stops a:hover, .route-stops a:focus {
+  text-decoration: underline;
 }
