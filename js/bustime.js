@@ -57,6 +57,13 @@ function loadContent() {
   if (refresh) {
     document.getElementById('refresh').style.display = 'block';
   }
+
+  // display vehicle popup if param exists
+  const vehiclePopup = urlParams['vehicle-popup'];
+  if (vehiclePopup) {
+    document.getElementById('vehicle-popup').style.display = 'block';
+  }
+
 }
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -160,6 +167,20 @@ document.addEventListener('DOMContentLoaded', function() {
     mapToggle.setAttribute('aria-label', mapWrap.classList.contains('open') ? 'Toggle Map Visibility (currently visible)' : 'Toggle Map Visibility (currently hidden)');
     mapToggle.setAttribute('aria-pressed', mapWrap.classList.contains('open'));
   });
+
+  // all .close-popup-button buttons close their parent popup
+  var popupCloseButtons = document.querySelectorAll('.close-popup-button');
+
+  popupCloseButtons.forEach(function(button) {
+    button.addEventListener('click', function() {
+      var parent = this.closest('.map-popup');
+      if (parent) {
+        // add class to hide the popup
+        parent.classList.add('hidden');
+      }
+    });
+  });
+
 
 
 });

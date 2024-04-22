@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="css/bustime.css">
 
     <!-- Link to JavaScript file -->
-    <script defer src="js/bustime.js?v=1.0.05"></script>
+    <script defer src="js/bustime.js?v=1.0.08"></script>
 </head>
 <body>
   <h1 class="visually-hidden">MTA Bus Time Home</h1>
@@ -136,7 +136,17 @@
           height="100%"
           frameborder="0" style="border:0"
           src="https://www.google.com/maps/embed/v1/view?key=AIzaSyC65u47U8CJxTrmNcXDP2KwCYGxmQO3ZfU&center=40.7128,-74.0060&zoom=12"
-      ></iframe>
+        ></iframe>
+        <div class="map-popup" id="vehicle-popup" style="display: none;">
+          <div class="popup-content">
+            <img src="/img/icon/bus-stroller.svg" alt="bus" class="icon">
+            <div class="bus-info">
+              <span class="route">B38 Downtown Bklyn Tillary St</span>
+              <span class="vehicle">Vehicle #4717</span>
+            </div>
+          </div>
+          <button class="close-popup-button"><span class="icon-wrap"><img src="/img/icon/close-circle.svg" alt="Close Popup" class="icon"></span></button>
+        </div>
       </div>
     </div>
   </div>
