@@ -1106,6 +1106,43 @@ button:hover, .button:hover {
 .cards-header {
   margin-bottom: 1rem;
 }
+.cards-header a.back-link {
+  text-decoration: none;
+  color: #0E61A9;
+  padding-left: 1.625em;
+  position: relative;
+}
+.cards-header a.back-link:hover, .cards-header a.back-link:focus {
+  text-decoration: underline;
+}
+.cards-header a.back-link::before {
+  content: "";
+  display: inline-block;
+  width: 1.125em;
+  height: 1.125em;
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-image: url(/img/icon/right-caret_blue.svg);
+  -webkit-transform: rotate(180deg);
+          transform: rotate(180deg);
+  position: absolute;
+  left: 0;
+  top: 0;
+}
+
+.card-title {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5em;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
+}
+.card-title .icon {
+  width: auto;
+  height: 1.25em;
+}
 
 .card > .card-header, .inner-card > .card-header {
   width: 100%;
@@ -1127,7 +1164,29 @@ button:hover, .button:hover {
 .card > .card-details, .inner-card > .card-details {
   list-style: none;
   margin: 0;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  gap: 0.5em;
   padding: 1rem 0.5rem 0.875rem 0.5rem;
+}
+.card > .card-details .vehicle-info, .inner-card > .card-details .vehicle-info {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  gap: 0.5em;
+}
+.card > .card-details .stroller, .inner-card > .card-details .stroller {
+  color: #666;
 }
 
 .card {
@@ -1315,6 +1374,30 @@ button:hover, .button:hover {
 .route-stops .approaching-buses .approaching {
   color: #3A3A49;
   font-weight: bold;
+}
+
+.next-stops {
+  font-size: 0.875em;
+}
+.next-stops .stops-header {
+  display: block;
+  font-weight: bold;
+  margin: 0.75em 0;
+}
+.next-stops .route-stops li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+.next-stops .route-stops a {
+  font-weight: bold;
+}
+.next-stops .route-stops .stop-details {
+  color: #000;
 }
 
 .map-popup {

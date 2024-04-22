@@ -529,6 +529,33 @@ button, .button
   gap: $content-padding
 .cards-header
   margin-bottom: $content-padding
+  a.back-link
+    text-decoration: none
+    color: $mta-blue
+    padding-left: 1.625em
+    position: relative
+    &:hover, &:focus
+      text-decoration: underline
+    &::before
+      content: ''
+      display: inline-block
+      width: 1.125em
+      height: 1.125em
+      background-size: auto 100%
+      background-repeat: no-repeat
+      background-position: center
+      background-image: url(/img/icon/right-caret_blue.svg)
+      transform: rotate(180deg)
+      position: absolute
+      left: 0
+      top: 0
+.card-title
+  display: flex
+  gap: .5em
+  flex-wrap: nowrap
+  .icon
+    width: auto
+    height: 1.25em
 .card, .inner-card
   >.card-header
     width: 100%
@@ -542,7 +569,17 @@ button, .button
   >.card-details
     list-style: none
     margin: 0
+    display: flex
+    flex-direction: column
+    gap: .5em
     +card-pad
+    .vehicle-info
+      display: flex
+      flex-wrap: wrap
+      justify-content: space-between
+      gap: .5em
+    .stroller
+      color: $dark-gray
 
 .card
   background-color: $white
@@ -680,6 +717,21 @@ button, .button
     .approaching
       color: $black3
       font-weight: bold
+
+.next-stops
+  font-size: .875em
+  .stops-header
+    display: block
+    font-weight: bold
+    margin: .75em 0
+  .route-stops
+    li
+      display: flex
+      flex-direction: column
+    a
+      font-weight: bold
+    .stop-details
+      color: $black
 
 .map-popup
   position: absolute
