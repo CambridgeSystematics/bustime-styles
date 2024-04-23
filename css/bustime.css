@@ -973,26 +973,15 @@ button:hover, .button:hover {
 .bottom-buttons button#map-toggle .hide-label {
   display: none;
 }
-.bottom-buttons button#refresh {
+.bottom-buttons button.refresh-button {
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
           flex-grow: 0;
   white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-.bottom-buttons button#refresh .updated-at {
-  font-weight: normal;
-}
-.bottom-buttons button#refresh .updated {
-  display: none;
 }
 .bottom-buttons button:focus {
   border-color: inherit;
   outline: 2px solid #f2a900;
-}
-.bottom-buttons button button#refresh .updated {
-  display: inline;
 }
 @media screen and (min-width: 600px) {
   .bottom-buttons {
@@ -1092,6 +1081,41 @@ button:hover, .button:hover {
   overflow: hidden;
   -webkit-transition: max-height 0.5s ease-in-out;
   transition: max-height 0.5s ease-in-out;
+}
+
+.refresh-button {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: none;
+}
+.refresh-button.show {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+.refresh-button .updated-at {
+  font-weight: normal;
+}
+.refresh-button .updated {
+  display: none;
+}
+.refresh-button .updated:focus {
+  border-color: inherit;
+  outline: 2px solid #f2a900;
+}
+.bottom-buttons .refresh-button.show {
+  display: block;
+}
+@media screen and (min-width: 400px) {
+  .refresh-button .updated {
+    display: inline;
+  }
+}
+
+@media screen and (max-width: 599px) {
+  .refresh-menu {
+    display: none;
+  }
 }
 
 .cards {

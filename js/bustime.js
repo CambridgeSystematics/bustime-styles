@@ -55,7 +55,12 @@ function loadContent() {
   // display refresh button if param exists
   const refresh = urlParams['refresh'];
   if (refresh) {
-    document.getElementById('refresh').style.display = 'block';
+    // get all .refresh-buttons and add class show
+    var refreshButtons = document.querySelectorAll('.refresh-button');
+    window.console.log(refreshButtons);
+    refreshButtons.forEach(function(button) {
+      button.classList.add('show');
+    });
   }
 
   // display vehicle popup if param exists

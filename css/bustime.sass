@@ -455,24 +455,12 @@ button, .button
       +text-outline($white, .125em)
       .hide-label
         display: none
-    &#refresh
+    &.refresh-button
       flex-grow: 0
       white-space: nowrap
-      overflow: hidden
-      text-overflow: ellipsis
-      .updated-at
-        font-weight: normal
-      .updated
-        display: none
     &:focus
       border-color: inherit
       outline: $medium-border solid $mta-yellow
-    +mq($four)
-    button
-      &#refresh
-        .updated
-          display: inline
-        
   +mq($sidebar-switch)
     display: none
 
@@ -521,12 +509,36 @@ button, .button
     overflow: hidden
     transition: max-height .5s ease-in-out
 
+.refresh-button
+  overflow: hidden
+  text-overflow: ellipsis
+  display: none
+  &.show
+    display: flex
+  .updated-at
+    font-weight: normal
+  .updated
+    display: none
+    &:focus
+      border-color: inherit
+      outline: $medium-border solid $mta-yellow
+  .bottom-buttons &
+    &.show
+      display: block
+  +mq($four)
+    .updated
+      display: inline
+
+.refresh-menu
+  +mq-reverse($sidebar-switch)
+    display: none
 
 .cards
   padding-bottom: $content-padding
   display: flex
   direction: column
   gap: $content-padding
+
 .cards-header
   margin-bottom: $content-padding
   a.back-link
@@ -549,6 +561,7 @@ button, .button
       position: absolute
       left: 0
       top: 0
+
 .card-title
   display: flex
   gap: .5em
@@ -556,6 +569,7 @@ button, .button
   .icon
     width: auto
     height: 1.25em
+
 .card, .inner-card
   >.card-header
     width: 100%
@@ -567,19 +581,19 @@ button, .button
     .label
       flex-grow: 1
   >.card-details
-    list-style: none
-    margin: 0
-    display: flex
-    flex-direction: column
-    gap: .5em
-    +card-pad
-    .vehicle-info
+      list-style: none
+      margin: 0
       display: flex
-      flex-wrap: wrap
-      justify-content: space-between
+      flex-direction: column
       gap: .5em
-    .stroller
-      color: $dark-gray
+      +card-pad
+      .vehicle-info
+        display: flex
+        flex-wrap: wrap
+        justify-content: space-between
+        gap: .5em
+      .stroller
+        color: $dark-gray
 
 .card
   background-color: $white
@@ -632,8 +646,7 @@ button, .button
     &:last-child
       &::after
         display: none
-
-        
+       
 .route-stops
   list-style: none
   margin: 0
