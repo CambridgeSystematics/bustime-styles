@@ -33,6 +33,11 @@ h1, h2, h3, h4, h5, h6
   margin: 0
   padding: 0
 
+h4
+  .card &, .inner-card &
+    font-weight: bold
+    margin: .75em 0
+
 p
   margin: 0 0 1em 0
   padding: 0
@@ -235,9 +240,6 @@ button, .button
             height: 1.3em
             background-image: url(/img/icon/bus-stop.svg)
     &.open
-      // &::after
-      //   opacity: 1
-      //   transition: opacity .25s ease-in-out
       background-color: $mta-blue
       >a, >button
         color: $white
@@ -507,7 +509,7 @@ button, .button
   .collapse-content
     max-height: 0
     overflow: hidden
-    transition: max-height .5s ease-in-out
+    transition: max-height .5s ease-in-out, margin .25s ease-in-out, padding .25s ease-in-out
 
 .refresh-button
   overflow: hidden
@@ -580,30 +582,36 @@ button, .button
     line-height: 1.25
     .label
       flex-grow: 1
-  >.card-details
-      list-style: none
-      margin: 0
+  .card-content
+    +card-pad-sides
+  .card-details
+    list-style: none
+    display: flex
+    flex-direction: column
+    gap: .5em
+    margin: 0
+    padding: $content-padding 0
+    .vehicle-info
       display: flex
-      flex-direction: column
+      flex-wrap: wrap
+      justify-content: space-between
       gap: .5em
-      +card-pad
-      .vehicle-info
-        display: flex
-        flex-wrap: wrap
-        justify-content: space-between
-        gap: .5em
-      .stroller
-        color: $dark-gray
+    .stroller
+      color: $dark-gray
+  &.collapsible
+    &.open:not(.route-direction)
+      .card-content
+        +card-pad
 
 .card
   background-color: $white
   border: 1px solid $border-gray
   +card-shadow
   >.card-header
-    border-bottom: $thick-border solid $border-gray
+    border-bottom: $thick-border solid $mta-blue
 
 .inner-card
-  margin: 0 $content-padding/2
+  margin: 0
   font-size: .875em
   border: none
   background: transparent
@@ -623,14 +631,9 @@ button, .button
       font-weight: bold
       border-bottom: 0px solid $mta-yellow
       transition: border-bottom .25s ease-in-out
-    .card-content
-      padding: 0 $content-padding
-      transition: padding .25s ease-in-out
     &.open
       .card-header
         border-bottom: $thick-border solid $mta-yellow
-      .card-content
-        padding: $content-padding
     &:last-child
       margin-bottom: $content-padding/2
   &.route-direction
@@ -733,18 +736,13 @@ button, .button
 
 .next-stops
   font-size: .875em
-  .stops-header
-    display: block
+  li
+    display: flex
+    flex-direction: column
+  a
     font-weight: bold
-    margin: .75em 0
-  .route-stops
-    li
-      display: flex
-      flex-direction: column
-    a
-      font-weight: bold
-    .stop-details
-      color: $black
+  .stop-details
+    color: $black
 
 .map-popup
   position: absolute
