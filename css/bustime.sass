@@ -35,8 +35,9 @@ h1, h2, h3, h4, h5, h6
 
 h4
   .card &, .inner-card &
+    font-size: .875em
     font-weight: bold
-    margin: .75em 0
+    margin: 0 0 .75em 0
 
 p
   margin: 0 0 1em 0
@@ -277,7 +278,17 @@ button, .button
           height: 1px
       .sub-menu
         margin: .5em
+  &.refresh-menu
+    +mq-reverse($sidebar-switch)
+      display: none
+  .card &
+    font-size: .875em
+    li
+      &:last-child
+        border-bottom: none
 
+//
+  
 // basic layout
 
 .main-body
@@ -531,10 +542,6 @@ button, .button
     .updated
       display: inline
 
-.refresh-menu
-  +mq-reverse($sidebar-switch)
-    display: none
-
 .cards
   padding-bottom: $content-padding
   display: flex
@@ -573,6 +580,7 @@ button, .button
     height: 1.25em
 
 .card, .inner-card
+  width: 100%
   >.card-header
     width: 100%
     +card-pad
@@ -582,8 +590,6 @@ button, .button
     line-height: 1.25
     .label
       flex-grow: 1
-  .card-content
-    +card-pad-sides
   .card-details
     list-style: none
     display: flex
@@ -598,10 +604,7 @@ button, .button
       gap: .5em
     .stroller
       color: $dark-gray
-  &.collapsible
-    &.open:not(.route-direction)
-      .card-content
-        +card-pad
+
 
 .card
   background-color: $white
@@ -609,6 +612,12 @@ button, .button
   +card-shadow
   >.card-header
     border-bottom: $thick-border solid $mta-blue
+  >.card-content
+    +card-pad-sides
+  &.collapsible
+    &.open
+      >.card-content
+        +card-pad
 
 .inner-card
   margin: 0
@@ -616,11 +625,15 @@ button, .button
   border: none
   background: transparent
   +rounded
+  .inner-card
+    font-size: 1em
   .card-header
     border: none
     background: transparent
+  .card-content
+    padding: 0 $content-padding
   &:not(.service-alert)
-    .card-header
+    >.card-header
       padding-left: 0
       &:not(.collapse-trigger)
         padding-right: 0
@@ -634,21 +647,32 @@ button, .button
     &.open
       .card-header
         border-bottom: $thick-border solid $mta-yellow
+      .card-content
+        padding: $content-padding
     &:last-child
       margin-bottom: $content-padding/2
   &.route-direction
     position: relative
-    &::after
+    .card-content
+      padding-right: 0
+      padding-left: 0
+    &::before
       content: ''
       display: block
       width: 100%
       height: 1px
       background-color: $black
       position: absolute
-      bottom: -1px
-    &:last-child
-      &::after
+      top: -1px
+    .service-alert + &
+      &::before
         display: none
+    &.en-route
+      >.card-header
+        .label
+          display: inline-block
+          border-left: $thick-border solid $mta-blue
+          padding-left: $content-padding/2
        
 .route-stops
   list-style: none
@@ -691,48 +715,57 @@ button, .button
     &:hover, &:focus
       text-decoration: underline  
   .approaching-buses
-    list-style: none
     margin: .25em 0 0 0
-    padding: 0
-    color: $black
-    font-weight: normal
-    li
-      display: flex
-      flex-wrap: nowrap
-      gap: .5em
-      padding: .25em 0
-      .bus
-        width: 4.5em
-        flex-grow: 0
-        flex-shrink: 0
-        display: inline-flex
-        &::before, &::after
-          content: ''
-          display: inline-block
-          width: .875em
-          height: .875em
-          background-size: auto 100%
-          background-repeat: no-repeat
-          background-position: center
-          margin-right: .25em
-          background-image: url(/img/icon/bus.svg)
-          vertical-align: top
-          transform: translateY(2px)
-          order: -2
+  
+.approaching-buses
+  list-style: none
+  padding: 0
+  color: $black
+  font-weight: normal
+  a
+    text-decoration: none
+    color: currentColor
+    &:hover, &:focus
+      text-decoration: underline
+  li
+    display: flex
+    flex-wrap: nowrap
+    gap: .5em
+    padding: .25em 0
+    .bus
+      width: 4.5em
+      flex-grow: 0
+      flex-shrink: 0
+      display: inline-flex
+      &::before, &::after
+        content: ''
+        display: inline-block
+        width: .875em
+        height: .875em
+        background-size: auto 100%
+        background-repeat: no-repeat
+        background-position: center
+        margin-right: .25em
+        background-image: url(/img/icon/bus.svg)
+        vertical-align: top
+        transform: translateY(2px)
+        order: -2
+      &::after
+        content: none
+        order: -1
+        background-image: url(/img/icon/stroller.svg)
+      &.stroller-friendly
         &::after
-          content: none
-          order: -1
-          background-image: url(/img/icon/stroller.svg)
-        &.stroller-friendly
-          &::after
-            content: ''
-      .bus-info
-        flex-grow: 1
-        display: inline-flex
-        flex-direction: column
-    .approaching
-      color: $black3
-      font-weight: bold
+          content: ''
+    .bus-info
+      flex-grow: 1
+      display: inline-flex
+      flex-direction: column
+  .approaching
+    color: $black3
+    font-weight: bold
+  .en-route &
+    margin: 0 0 $content-padding/2 0
 
 .next-stops
   font-size: .875em
@@ -833,3 +866,7 @@ button, .button
       border-radius: 50%
       z-index: 1
 
+.text-note
+  font-size: .875em
+  padding-top: $content-padding
+  border-top: 1px solid $black

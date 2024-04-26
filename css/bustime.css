@@ -353,8 +353,9 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .card h4, .inner-card h4 {
+  font-size: 0.875em;
   font-weight: bold;
-  margin: 0.75em 0;
+  margin: 0 0 0.75em 0;
 }
 
 p {
@@ -681,6 +682,17 @@ button:hover, .button:hover {
 .icon-menu > li.open .sub-menu {
   margin: 0.5em;
 }
+@media screen and (max-width: 599px) {
+  .icon-menu.refresh-menu {
+    display: none;
+  }
+}
+.card .icon-menu {
+  font-size: 0.875em;
+}
+.card .icon-menu li:last-child {
+  border-bottom: none;
+}
 
 .main-body {
   width: 100%;
@@ -940,7 +952,7 @@ button:hover, .button:hover {
   #sidebar {
     -webkit-box-shadow: 0.25em 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
             box-shadow: 0.25em 0.25em 0.5em 0 rgba(0, 0, 0, 0.25);
-    width: 22em;
+    width: 23em;
     height: auto;
   }
 }
@@ -1117,12 +1129,6 @@ button:hover, .button:hover {
   }
 }
 
-@media screen and (max-width: 599px) {
-  .refresh-menu {
-    display: none;
-  }
-}
-
 .cards {
   padding-bottom: 1rem;
   display: -webkit-box;
@@ -1173,6 +1179,9 @@ button:hover, .button:hover {
   height: 1.25em;
 }
 
+.card, .inner-card {
+  width: 100%;
+}
 .card > .card-header, .inner-card > .card-header {
   width: 100%;
   padding: 1rem 0.5rem 0.875rem 0.5rem;
@@ -1189,9 +1198,6 @@ button:hover, .button:hover {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
-}
-.card .card-content, .inner-card .card-content {
-  padding: 0 0.5rem;
 }
 .card .card-details, .inner-card .card-details {
   list-style: none;
@@ -1220,9 +1226,6 @@ button:hover, .button:hover {
 .card .card-details .stroller, .inner-card .card-details .stroller {
   color: #666;
 }
-.card.collapsible.open:not(.route-direction) .card-content, .inner-card.collapsible.open:not(.route-direction) .card-content {
-  padding: 1rem 0.5rem 0.875rem 0.5rem;
-}
 
 .card {
   background-color: #fff;
@@ -1233,6 +1236,12 @@ button:hover, .button:hover {
 .card > .card-header {
   border-bottom: 4px solid #0E61A9;
 }
+.card > .card-content {
+  padding: 0 0.5rem;
+}
+.card.collapsible.open > .card-content {
+  padding: 1rem 0.5rem 0.875rem 0.5rem;
+}
 
 .inner-card {
   margin: 0;
@@ -1241,14 +1250,20 @@ button:hover, .button:hover {
   background: transparent;
   border-radius: 0.25em;
 }
+.inner-card .inner-card {
+  font-size: 1em;
+}
 .inner-card .card-header {
   border: none;
   background: transparent;
 }
-.inner-card:not(.service-alert) .card-header {
+.inner-card .card-content {
+  padding: 0 1rem;
+}
+.inner-card:not(.service-alert) > .card-header {
   padding-left: 0;
 }
-.inner-card:not(.service-alert) .card-header:not(.collapse-trigger) {
+.inner-card:not(.service-alert) > .card-header:not(.collapse-trigger) {
   padding-right: 0;
 }
 .inner-card.service-alert {
@@ -1264,23 +1279,35 @@ button:hover, .button:hover {
 .inner-card.service-alert.open .card-header {
   border-bottom: 4px solid #f2a900;
 }
+.inner-card.service-alert.open .card-content {
+  padding: 1rem;
+}
 .inner-card.service-alert:last-child {
   margin-bottom: 0.5rem;
 }
 .inner-card.route-direction {
   position: relative;
 }
-.inner-card.route-direction::after {
+.inner-card.route-direction .card-content {
+  padding-right: 0;
+  padding-left: 0;
+}
+.inner-card.route-direction::before {
   content: "";
   display: block;
   width: 100%;
   height: 1px;
   background-color: #000;
   position: absolute;
-  bottom: -1px;
+  top: -1px;
 }
-.inner-card.route-direction:last-child::after {
+.service-alert + .inner-card.route-direction::before {
   display: none;
+}
+.inner-card.route-direction.en-route > .card-header .label {
+  display: inline-block;
+  border-left: 4px solid #0E61A9;
+  padding-left: 0.5rem;
 }
 
 .route-stops {
@@ -1333,13 +1360,23 @@ button:hover, .button:hover {
   text-decoration: underline;
 }
 .route-stops .approaching-buses {
-  list-style: none;
   margin: 0.25em 0 0 0;
+}
+
+.approaching-buses {
+  list-style: none;
   padding: 0;
   color: #000;
   font-weight: normal;
 }
-.route-stops .approaching-buses li {
+.approaching-buses a {
+  text-decoration: none;
+  color: currentColor;
+}
+.approaching-buses a:hover, .approaching-buses a:focus {
+  text-decoration: underline;
+}
+.approaching-buses li {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -1348,7 +1385,7 @@ button:hover, .button:hover {
   gap: 0.5em;
   padding: 0.25em 0;
 }
-.route-stops .approaching-buses li .bus {
+.approaching-buses li .bus {
   width: 4.5em;
   -webkit-box-flex: 0;
       -ms-flex-positive: 0;
@@ -1359,7 +1396,7 @@ button:hover, .button:hover {
   display: -ms-inline-flexbox;
   display: inline-flex;
 }
-.route-stops .approaching-buses li .bus::before, .route-stops .approaching-buses li .bus::after {
+.approaching-buses li .bus::before, .approaching-buses li .bus::after {
   content: "";
   display: inline-block;
   width: 0.875em;
@@ -1376,17 +1413,17 @@ button:hover, .button:hover {
       -ms-flex-order: -2;
           order: -2;
 }
-.route-stops .approaching-buses li .bus::after {
+.approaching-buses li .bus::after {
   content: none;
   -webkit-box-ordinal-group: 0;
       -ms-flex-order: -1;
           order: -1;
   background-image: url(/img/icon/stroller.svg);
 }
-.route-stops .approaching-buses li .bus.stroller-friendly::after {
+.approaching-buses li .bus.stroller-friendly::after {
   content: "";
 }
-.route-stops .approaching-buses li .bus-info {
+.approaching-buses li .bus-info {
   -webkit-box-flex: 1;
       -ms-flex-positive: 1;
           flex-grow: 1;
@@ -1398,9 +1435,12 @@ button:hover, .button:hover {
       -ms-flex-direction: column;
           flex-direction: column;
 }
-.route-stops .approaching-buses .approaching {
+.approaching-buses .approaching {
   color: #3A3A49;
   font-weight: bold;
+}
+.en-route .approaching-buses {
+  margin: 0 0 0.5rem 0;
 }
 
 .next-stops {
@@ -1532,4 +1572,10 @@ button:hover, .button:hover {
   background-color: rgba(0, 0, 0, 0.25);
   border-radius: 50%;
   z-index: 1;
+}
+
+.text-note {
+  font-size: 0.875em;
+  padding-top: 1rem;
+  border-top: 1px solid #000;
 }

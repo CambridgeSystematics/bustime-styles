@@ -36,6 +36,9 @@ function loadContent() {
       if (xhr.status === 200) {
         // Inject fetched content into the #app div
         document.getElementById('app').innerHTML = xhr.responseText;
+
+        // Call the function to update collapsibles after content injection
+        updateCollapsibles();
       } else {
         console.error('Failed to fetch content');
       }
@@ -52,65 +55,49 @@ function loadContent() {
     document.getElementById('search-input').value = searchParam;
   }
 
-  // display refresh button if param exists
+  // Display refresh button if the param exists
   const refresh = urlParams['refresh'];
   if (refresh) {
-    // get all .refresh-buttons and add class show
-    var refreshButtons = document.querySelectorAll('.refresh-button');
-    window.console.log(refreshButtons);
-    refreshButtons.forEach(function(button) {
+    // Get all .refresh-buttons and add class show
+    const refreshButtons = document.querySelectorAll('.refresh-button');
+    refreshButtons.forEach(button => {
       button.classList.add('show');
     });
   }
 
-  // display vehicle popup if param exists
+  // Display vehicle popup if param exists
   const vehiclePopup = urlParams['vehicle-popup'];
   if (vehiclePopup) {
     document.getElementById('vehicle-popup').style.display = 'block';
   }
+}
 
+// Define the function to update collapsibles
+function updateCollapsibles() {
+  var collapsibles = document.querySelectorAll('.collapsible.open');
+  collapsibles.forEach(function(collapsible) {
+    var collapseContent = collapsible.querySelector('.collapse-content');
+    if (collapseContent) {
+      // Calculate the actual height of the collapse-content
+      var actualHeight = collapseContent.scrollHeight;
+
+      // Set the max-height for animation
+      collapseContent.style.maxHeight = actualHeight + 'px';
+
+      // Toggle tabindex of <a> or <button> elements within .collapse-content
+      var innerTabbableItems = collapseContent.querySelectorAll('a[tabindex], button[tabindex]');
+      innerTabbableItems.forEach(function(element) {
+        var currentIndex = element.getAttribute('tabindex');
+        element.setAttribute('tabindex', currentIndex === '0' ? '-1' : '0');
+      });
+    }
+  });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
 
   // Load content based on URL parameter, so we can load different bustime views for styling in just one HTML file, this should not move over
   loadContent();
-
-  // sub menus open and close - this was replaced with the collapse trigger below
-  // var subMenuTriggers = document.querySelectorAll('.sub-menu-trigger');
-
-  // subMenuTriggers.forEach(function(trigger) {
-  //   trigger.addEventListener('click', function() {
-  //     var parent = this.closest('.parent');
-  //     // window.console.log(parent);
-
-  //     if (parent) {
-  //       parent.classList.toggle('open');
-
-  //       var subMenu = parent.querySelector('.sub-menu');
-  //       if (subMenu) {
-  //         // Calculate the actual height of the sub-menu content
-  //         var actualHeight = subMenu.scrollHeight;
-
-  //         // Clear the inline height style before setting a new height
-  //         subMenu.style.maxHeight = '';
-
-  //         // Set the height property to achieve animation
-  //         subMenu.style.maxHeight = parent.classList.contains('open') ? actualHeight + 'px' : '0';
-
-  //         // Toggle tabindex of <a> or <button> elements within .sub-menu
-  //         var innerTabbableItems = subMenu.querySelectorAll('a[tabindex], button[tabindex]');
-  //         innerTabbableItems.forEach(function(element) {
-  //           var currentIndex = element.getAttribute('tabindex');
-  //           element.setAttribute('tabindex', currentIndex === '0' ? '-1' : '0');
-  //         });
-
-  //         // Set aria-expanded attribute
-  //         this.setAttribute('aria-expanded', parent.classList.contains('open'));
-  //       }
-  //     }
-  //   });
-  // });
 
 
   // have to do clicks this way so they work on objects added after the page loads
@@ -122,7 +109,7 @@ document.addEventListener('DOMContentLoaded', function() {
     if (collapseTrigger) {
         // Toggle the 'open' class
         collapseTrigger.classList.toggle('open');
-        console.log('caretToggle clicked');
+        // console.log('caretToggle clicked');
 
         var parent = collapseTrigger.closest('.collapsible');
         // window.console.log(parent);
@@ -149,7 +136,7 @@ document.addEventListener('DOMContentLoaded', function() {
             });
   
             // Set aria-expanded attribute
-            this.setAttribute('aria-expanded', parent.classList.contains('open'));
+            collapseTrigger.setAttribute('aria-expanded', parent.classList.contains('open'));
           }
         }
 
@@ -164,7 +151,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
   mapToggle.addEventListener('click', function() {
 
-    window.console.log('mapToggle clicked');
+    // window.console.log('mapToggle clicked');
     
     mapWrap.classList.toggle('open');
 
