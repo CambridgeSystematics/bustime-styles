@@ -1104,6 +1104,7 @@ button:hover, .button:hover {
   overflow: hidden;
   text-overflow: ellipsis;
   display: none;
+  font-weight: bold;
 }
 .refresh-button.show {
   display: -webkit-box;
